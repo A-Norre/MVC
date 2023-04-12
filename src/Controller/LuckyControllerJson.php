@@ -24,7 +24,7 @@ class LuckyControllerJson
         return $response;
     }
 
-    #[Route("/api/quote")]
+    #[Route("/api/quote", name: "quote")]
     public function jsonQuote(): Response
     {
         $number = random_int(0, 2);

@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw{% endblock %}
+
+
+{% block body %}
+
+<h3>Dragna kort</h3>
+{% for card in removed %}
+    <b>{{ card }}</b><br>
+{% endfor %}
+<h3>Antal kort kvar:</h3>
+<b>{{ num_cards }} st</b><br>
+
+<h3>How many would you like to draw?<h3>
+<a href="{{ path('draw_x_card', {num: 1}) }}">1 Card</a><br>
+<a href="{{ path('draw_x_card', {num: 2}) }}">2 Cards</a><br>
+<a href="{{ path('draw_x_card', {num: 3}) }}">3 Cards</a><br>
+<a href="{{ path('draw_x_card', {num: 4}) }}">4 Cards</a><br>
+<a href="{{ path('draw_x_card', {num: 5}) }}">5 Cards</a>
+
+{% endblock %}

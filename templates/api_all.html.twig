@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Cards{% endblock %}
+
+{% block body %}
+    <h3>What would you like to do?<h3>
+    <a href="{{ path('quote') }}">Writes random quotes</a><br>
+    <a href="{{ path('api_deck') }}">See deck</a><br>
+    <a href="{{ path('api_shuffle') }}">Shuffle</a><br>
+    <a href="{{ path('api_draw') }}">Draw</a><br>
+    
+    
+{% endblock %}
+
+

@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Cards{% endblock %}
+
+{% block body %}
+
+    <h3>What would you like to do?<h3>
+    <a href="{{ path('see_cards') }}">See deck</a><br>
+    <a href="{{ path('shuffle_card') }}">Shuffle</a><br>
+    <a href="{{ path('draw_card') }}">Draw</a><br>
+    
+
+    <p>
+        <img src="{{ asset('img/classdiagram_kmom02.png') }}" alt=""><br>
+        För denna delen har jag skapat en klass "Deck". Tanken är att denna 
+        klassen ska innehålla de grundläggande delarna för min kortlek. Den skapar upp 
+        en kortlek, blandar, drar kort, raderar kort, räknar ut antalet kort i leken 
+        samt återskapar kortleken när den har ändrats. Då jag anar att i framtida kursmoment 
+        kommer det att läggas till ytterligare funktioner, kanske för att skapa någon form av spel 
+        tänker jag i så fall skapa en ny klass för respektive del av spelet, men jag vill ha grunden på ett ställe.
+    </p>
+    
+{% endblock %}
+
+
