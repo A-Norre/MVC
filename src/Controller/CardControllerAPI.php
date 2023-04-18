@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Deck\Deck;
+use App\Deck\DeckStart;
+use App\Deck\DeckCon;
 
 class CardControllerJson 
 {
@@ -15,7 +17,7 @@ class CardControllerJson
     public function jsonDeck(): Response
     {
 
-        $deck = new Deck();
+        $deck = new DeckCon();
 
         $data = [
             "deck" => $deck->cards(),
@@ -24,7 +26,7 @@ class CardControllerJson
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
     }
@@ -36,7 +38,7 @@ class CardControllerJson
     ): Response
     {
 
-        $deck = new Deck();
+        $deck = new DeckCon();
 
         $shuffled_deck = $deck->shuffle($deck->cards());
 
@@ -49,7 +51,7 @@ class CardControllerJson
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
     }
@@ -63,7 +65,7 @@ class CardControllerJson
         if ($session->get("remaining_cards")) {
 
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new Deck();
+            $deck = new DeckCon();
             $remaining_cards = array_values($remaining_cards);
            
             $removed_card = $deck->draw($remaining_cards);
@@ -78,7 +80,7 @@ class CardControllerJson
             //session_destroy();
         } else {
             $remaining_cards = [];
-            $deck = new Deck();
+            $deck = new DeckCon();
             
             $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
             $session->set("remaining_cards", $remaining_cards);
@@ -92,7 +94,7 @@ class CardControllerJson
         
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
 
@@ -108,8 +110,16 @@ class CardControllerJson
         if ($session->get("remaining_cards")) {
 
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new Deck();
+            $deck = new DeckCon();
             $remaining_cards = array_values($remaining_cards);
+
+            if (count($deck->recreate($remaining_cards)) <= 5) {
+                session_destroy();
+                session_start();
+
+                $remaining_cards = $deck->shuffle($deck->cards());
+            }
+
             $removed_card = [];
 
             for ($i = 0; $i < $num; $i++) {
@@ -127,7 +137,7 @@ class CardControllerJson
             //session_destroy();
         } else {
             $remaining_cards = [];
-            $deck = new Deck();
+            $deck = new DeckCon();
             $removed_card = [];
             
             for ($i = 0; $i < $num; $i++) {
@@ -144,7 +154,7 @@ class CardControllerJson
         
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
         );
         return $response;
     }

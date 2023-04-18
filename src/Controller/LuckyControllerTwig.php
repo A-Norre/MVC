@@ -32,7 +32,7 @@ class LuckyControllerTwig extends AbstractController
         return $this->render('presentation.html.twig');
     }
 
-    #[Route("/api/report", name: "report")]
+    #[Route("/report", name: "report")]
     public function report(): Response
     {
         return $this->render('report.html.twig');
@@ -42,5 +42,18 @@ class LuckyControllerTwig extends AbstractController
     public function about(): Response
     {
         return $this->render('about.html.twig');
+    }
+
+    #[Route("/reset", name: "reset")]
+    public function reset(): Response
+    {
+        //if (session_status() === PHP_SESSION_ACTIVE) {
+        //    session_destroy();
+        //}
+        //session_unset();
+        session_start();
+        session_destroy();
+
+        return $this->render('cards_all.html.twig');
     }
 }

@@ -5,32 +5,16 @@ namespace App\Deck;
 class Deck
 {
 
-	public static function cards()
-	{
-		$values = array('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A');
-		$suits  = array(' Spades', ' Hearts', ' Diamonds', ' Clover');
-		
-		$cards = array();
-		foreach ($suits as $suit) {
-			foreach ($values as $value) {
-				$cards[] = $value . $suit;
-			}
-		}
-
-		return $cards;
-	}
-
-
 	public static function shuffle(array $cards)
 	{
-		$all_cards = count($cards);
+		$total_cards = count($cards);
 		
 		foreach ($cards as $i => $card) {
-			$card2 = mt_rand(1, $all_cards) - 1;
-			$card2 = $cards[$card2];
+			$card2_i = mt_rand(1, $total_cards) - 1;
+			$card2 = $cards[$card2_i];
 			
 			$cards[$i] = $card2;
-			$cards[$card2] = $card;
+			$cards[$card2_i] = $card;
 		}
 		
 		return $cards;

@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Tjugoett{% endblock %}
+
+{% block body %}
+    <h1>Tjugoett</h1>
+
+    <h3>Bankens tur</h3>
+
+    <b>Spelare:</b><br>
+    {% for card in bank %}
+        <b>{{ card }}</b><br>
+    {% endfor %}
+
+
+    <b>{{ num_cards }}</b><br>
+    
+    
+{% endblock %}

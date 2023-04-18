@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Tjugoett{% endblock %}
+
+{% block body %}
+    <h1>Tjugoett</h1>
+
+    <h3>Spelet har startat!</h3>
+
+    <b>Spelare:</b><br>
+    {% for card in player %}
+        <b>{{ card }}</b><br>
+    {% endfor %}
+
+    <form>
+        <input type="button" onclick="location.href='{{ path('game_start') }}';" value="Ett kort till!" />
+        <input type="button" onclick="location.href='{{ path('game_bank') }}';" value="Stanna!" />
+    </form>
+
+    <b>{{ num_cards }}</b><br>
+    
+    
+{% endblock %}

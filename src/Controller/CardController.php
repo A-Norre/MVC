@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Deck\Deck;
+use App\Deck\DeckStart;
+use App\Deck\DeckCon;
 
 // kommentar 2
 
@@ -31,7 +33,10 @@ class CardController extends AbstractController
     #[Route('/card/deck', name: "see_cards")]
     public function card_deck(): Response
     {
-        $deck = new Deck();
+        session_start();
+        session_destroy();
+
+        $deck = new DeckCon();
 
         $data = [
             "deck" => $deck->cards(),
@@ -46,7 +51,11 @@ class CardController extends AbstractController
         SessionInterface $session
     ): Response
     {
-        $deck = new Deck();
+        session_start();
+        session_destroy();
+
+        $deck = new DeckCon();
+
         $shuffled_deck = $deck->shuffle($deck->cards());
 
         $session->set("remaining_cards", $shuffled_deck);
@@ -67,7 +76,8 @@ class CardController extends AbstractController
         if ($session->get("remaining_cards")) {
 
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new Deck();
+            $deck = new DeckCon();
+
             $remaining_cards = array_values($remaining_cards);
            
             $removed_card = $deck->draw($remaining_cards);
@@ -79,10 +89,10 @@ class CardController extends AbstractController
                 "removed" => $removed_card,
                 "num_cards" => count($deck->recreate($remaining_cards)),
             ];
-            //session_destroy();
+
         } else {
             $remaining_cards = [];
-            $deck = new Deck();
+            $deck = new DeckCon();
             
             $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
             $session->set("remaining_cards", $remaining_cards);
@@ -93,7 +103,7 @@ class CardController extends AbstractController
             ];
         }
         
-        
+
         return $this->render('cards_draw.html.twig', $data);
 
     }
@@ -107,17 +117,26 @@ class CardController extends AbstractController
     ): Response
     {
         if ($session->get("remaining_cards")) {
-
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new Deck();
+            $deck = new DeckCon();
+
+
             $remaining_cards = array_values($remaining_cards);
+
+            if (count($deck->recreate($remaining_cards)) <= 5) {
+                session_destroy();
+                session_start();
+
+                $remaining_cards = $deck->shuffle($deck->cards());
+            }
+
             $removed_card = [];
 
             for ($i = 0; $i < $num; $i++) {
                 array_push($removed_card, $deck->draw($remaining_cards, $i));
                 $remaining_cards = $deck->remove($deck->recreate($remaining_cards), $deck->draw($remaining_cards, $i));    
             }
-
+            
             $remaining_cards = array_values($remaining_cards);
             $session->set("remaining_cards", $remaining_cards);
 
@@ -125,10 +144,10 @@ class CardController extends AbstractController
                 "removed" => $removed_card,
                 "num_cards" => count($deck->recreate($remaining_cards)),
             ];
-            //session_destroy();
+
         } else {
             $remaining_cards = [];
-            $deck = new Deck();
+            $deck = new DeckCon();
             $removed_card = [];
             
             for ($i = 0; $i < $num; $i++) {
