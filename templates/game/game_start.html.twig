@@ -9,15 +9,32 @@
 
     <b>Spelare:</b><br>
     {% for card in player %}
-        <b>{{ card }}</b><br>
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
     {% endfor %}
+    <br><br>
+
+    <b>Poäng</b>
+    <b>{{ sum_points }}</b><br><br>
 
     <form>
-        <input type="button" onclick="location.href='{{ path('game_start') }}';" value="Ett kort till!" />
-        <input type="button" onclick="location.href='{{ path('game_bank') }}';" value="Stanna!" />
+        {% if sum_points < 21 %}
+            <input type="button" onclick="location.href='{{ path('game_start') }}';" value="Ett kort till!" />
+            <input type="button" onclick="location.href='{{ path('game_bank') }}';" value="Stanna!" />
+        {% else %}
+            <input type="button" onclick="location.href='{{ path('game_bank') }}';" value="Ta reda på resultat!" />
+        {% endif %}
     </form>
+    <br>
+    <br>
 
-    <b>{{ num_cards }}</b><br>
+    {# <b>{{ num_cards }}</b><br> #}
+    
     
     
 {% endblock %}

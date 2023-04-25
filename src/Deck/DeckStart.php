@@ -2,13 +2,13 @@
 
 namespace App\Deck;
 
-class DeckStart extends Deck
+class DeckStart
 {
 
-	public static function cards()
+	public static function createcards($values, $suits)
 	{
-		$values = array('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A');
-		$suits  = array(' ♠', ' ♥', ' ♦', ' ♣');
+		//$values = array('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A');
+		//$suits  = array(' ♠', ' ♥', ' ♦', ' ♣');
 		
 		$cards = array();
 		foreach ($suits as $suit) {
@@ -19,10 +19,5 @@ class DeckStart extends Deck
 
 		return $cards;
 	}
-
-	public function __construct()
-    {
-        $this->start_value = null;
-    }
 }
 

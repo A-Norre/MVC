@@ -8,7 +8,13 @@
 <h3>Shuffled cards:<h3>
 
 {% for card in deck %}
-    <b>{{ card }}</b><br>
+    {% if '♥' in card %}
+        <b style="color: red">{{ card }}</b><br>
+    {% elseif '♦' in card %}
+        <b style="color: red">{{ card }}</b><br>
+    {% else %}
+        <b>{{ card }}</b><br>
+    {% endif %}
 {% endfor %}
 
 {% endblock %}

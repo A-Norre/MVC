@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dokumentation{% endblock %}
+
+{% block body %}
+    <h1>Dokumentation</h1>
+
+    <h3>Flödesschema</h3>
+    <img src="{{ asset('img/flodesschema.png') }}" alt="" height="400px" width="500px">
+
+
+    <h3>Psuedokod</h3>
+    <p>
+        En startsida som visar regler för spelet, med en knapp som leder till att spelet startar.<br><br>
+
+        En kortlek skapas<br><br>
+
+        Kortleken blandas<br><br>
+
+        Två kort dras från kortleken och skrivs ut<br><br>
+
+        totalvärdet av korten räknas ut, om under 21 erbjuder den användaren att dra ett kort till eller att stanna. Om 21 eller högre erbjud endast användaren att ta reda på resultat.<br><br>
+
+        Banken drar sina kort från samma kortlek<br><br>
+
+        Spelarens poäng jämförs mot bankens poäng<br><br>
+
+        Resultatet redovisas<br><br>
+
+        Spelaren erbjuds en ny omgång<br><br>
+
+        Spelaren skickas tillbaka till startsidan och spelet börjar om.<br><br>
+    </p>
+
+    <h3>Klasser</h3>
+    <p>De klasser jag tror behövs för att lösa uppgiften är en klass som skapar upp en kortlek.
+En annan klass där tillhörande funktioner vars användning är ofta återkommande och grundläggande för att spelet ska fungera läggs och som även ropar på den andra klassen för att be om att en kortlek skapas. Samt en ytterligare klass där extra funktioner kan läggas vars använding är mer specialinriktade på olika delar av spelet, beroende på hur omfattande man väljer att göra uppgiften.</p>
+    
+    
+    
+{% endblock %}

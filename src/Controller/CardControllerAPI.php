@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Deck\Deck;
 use App\Deck\DeckStart;
-use App\Deck\DeckCon;
+//use App\Deck\DeckCon;
 
 class CardControllerJson 
 {
@@ -17,7 +17,7 @@ class CardControllerJson
     public function jsonDeck(): Response
     {
 
-        $deck = new DeckCon();
+        $deck = new Deck();
 
         $data = [
             "deck" => $deck->cards(),
@@ -38,7 +38,7 @@ class CardControllerJson
     ): Response
     {
 
-        $deck = new DeckCon();
+        $deck = new Deck();
 
         $shuffled_deck = $deck->shuffle($deck->cards());
 
@@ -65,7 +65,7 @@ class CardControllerJson
         if ($session->get("remaining_cards")) {
 
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new DeckCon();
+            $deck = new Deck();
             $remaining_cards = array_values($remaining_cards);
            
             $removed_card = $deck->draw($remaining_cards);
@@ -80,7 +80,7 @@ class CardControllerJson
             //session_destroy();
         } else {
             $remaining_cards = [];
-            $deck = new DeckCon();
+            $deck = new Deck();
             
             $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
             $session->set("remaining_cards", $remaining_cards);
@@ -110,14 +110,15 @@ class CardControllerJson
         if ($session->get("remaining_cards")) {
 
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new DeckCon();
+            $deck = new Deck();
             $remaining_cards = array_values($remaining_cards);
 
             if (count($deck->recreate($remaining_cards)) <= 5) {
-                session_destroy();
-                session_start();
+                //session_destroy();
+                //session_start();
 
-                $remaining_cards = $deck->shuffle($deck->cards());
+                $deck2 = new Deck();
+                $remaining_cards = $deck2->shuffle($deck2->cards());
             }
 
             $removed_card = [];
@@ -137,7 +138,7 @@ class CardControllerJson
             //session_destroy();
         } else {
             $remaining_cards = [];
-            $deck = new DeckCon();
+            $deck = new Deck();
             $removed_card = [];
             
             for ($i = 0; $i < $num; $i++) {

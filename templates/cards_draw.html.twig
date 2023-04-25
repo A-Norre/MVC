@@ -6,7 +6,13 @@
 {% block body %}
 
 <h3>Dragna kort</h3>
-<b>{{ removed }}</b><br>
+{% if '♥' in removed %}
+        <b style="color: red">{{ removed }}</b><br>
+    {% elseif '♦' in removed %}
+        <b style="color: red">{{ removed }}</b><br>
+    {% else %}
+        <b>{{ removed }}</b><br>
+{% endif %}
 
 <h3>Antal kort kvar:</h3>
 <b>{{ num_cards }} st</b><br>

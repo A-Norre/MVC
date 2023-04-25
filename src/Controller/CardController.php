@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Deck\Deck;
 use App\Deck\DeckStart;
-use App\Deck\DeckCon;
+//use App\Deck\DeckCon;
 
 // kommentar 2
 
@@ -33,10 +33,10 @@ class CardController extends AbstractController
     #[Route('/card/deck', name: "see_cards")]
     public function card_deck(): Response
     {
-        session_start();
-        session_destroy();
+        //session_start();
+        //session_destroy();
 
-        $deck = new DeckCon();
+        $deck = new Deck();
 
         $data = [
             "deck" => $deck->cards(),
@@ -51,10 +51,10 @@ class CardController extends AbstractController
         SessionInterface $session
     ): Response
     {
-        session_start();
-        session_destroy();
+        //session_start();
+        //session_destroy();
 
-        $deck = new DeckCon();
+        $deck = new Deck();
 
         $shuffled_deck = $deck->shuffle($deck->cards());
 
@@ -76,7 +76,7 @@ class CardController extends AbstractController
         if ($session->get("remaining_cards")) {
 
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new DeckCon();
+            $deck = new Deck();
 
             $remaining_cards = array_values($remaining_cards);
            
@@ -92,7 +92,7 @@ class CardController extends AbstractController
 
         } else {
             $remaining_cards = [];
-            $deck = new DeckCon();
+            $deck = new Deck();
             
             $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
             $session->set("remaining_cards", $remaining_cards);
@@ -118,16 +118,17 @@ class CardController extends AbstractController
     {
         if ($session->get("remaining_cards")) {
             $remaining_cards = $session->get("remaining_cards");
-            $deck = new DeckCon();
+            $deck = new Deck();
 
 
             $remaining_cards = array_values($remaining_cards);
 
             if (count($deck->recreate($remaining_cards)) <= 5) {
-                session_destroy();
-                session_start();
+                //session_destroy();
+                //session_start();
+                $deck2 = new Deck();
 
-                $remaining_cards = $deck->shuffle($deck->cards());
+                $remaining_cards = $deck2->shuffle($deck2->cards());
             }
 
             $removed_card = [];
@@ -147,7 +148,7 @@ class CardController extends AbstractController
 
         } else {
             $remaining_cards = [];
-            $deck = new DeckCon();
+            $deck = new Deck();
             $removed_card = [];
             
             for ($i = 0; $i < $num; $i++) {

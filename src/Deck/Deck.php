@@ -1,10 +1,19 @@
 <?php
 
 namespace App\Deck;
+use App\Deck\DeckStart;
 
-class Deck
+class Deck extends DeckFunc
 {
 
+	public static function cards()
+	{
+		$values = array('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A');
+		$suits  = array(' ♥', ' ♦', ' ♠', ' ♣');
+		$deck_of_cards = new DeckStart();
+
+		return $deck_of_cards->createcards($values, $suits);
+	}
 	public static function shuffle(array $cards)
 	{
 		$total_cards = count($cards);
@@ -25,25 +34,5 @@ class Deck
 
 		return $cards[$draw_card];
 	}
-
-	public static function remove(array $cards, string $draw_card)
-	{
-		$removed_card = $draw_card;
-		if (in_array($draw_card, $cards))
-		{
-			unset($cards[array_search($draw_card, $cards)]);
-		}
-		return $cards;
-	}
-
-	public function getNumberCards(array $cards): int
-    {
-        return count($cards);
-    }
-
-	public function recreate(array $cards)
-    {
-        return $cards;
-    }
 }
 

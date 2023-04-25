@@ -11,14 +11,15 @@
     
 
     <p>
-        <img src="{{ asset('img/classdiagram_kmom02.png') }}" alt=""><br>
-        För denna delen har jag skapat en klass "Deck". Tanken är att denna 
-        klassen ska innehålla de grundläggande delarna för min kortlek. Den skapar upp 
-        en kortlek, blandar, drar kort, raderar kort, räknar ut antalet kort i leken 
-        samt återskapar kortleken när den har ändrats. Då jag anar att i framtida kursmoment 
-        kommer det att läggas till ytterligare funktioner, kanske för att skapa någon form av spel 
-        tänker jag i så fall skapa en ny klass för respektive del av spelet, men jag vill ha grunden på ett ställe.
+        För denna delen har jag skapat en klass "DeckCon" som konstruerar en kortlek.
+        Därefter har jag gjort ytterligare en klass "DeckStart" som ärver från "DeckCon" som i sin tur skapar korten i kortleken.
+        Sedan finns det en tredje klass "Deck" denna 
+        klassen innehåller de grundläggande delarna för min kortlek som kan användas via komposition. Den blandar, drar kort, raderar kort, räknar ut antalet kort i leken 
+        samt återskapar kortleken när den har ändrats.<br><br>
     </p>
+
+    <h3>Klassdiagram:</h3>
+    <img src="{{ asset('img/2classdiagram_kmom02.png') }}" alt="">
     
 {% endblock %}
 

@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Tjugoett{% endblock %}
+
+{% block body %}
+    <h1>Tjugoett</h1>
+
+    <h3>Sammanställning</h3>
+
+    {% if bank == 21 %}
+            <b>Bankiren vann!</b><br>
+    {% elseif player == 21 %}
+            <b>Du vann!</b><br>
+    {% elseif player > 21 and bank < 21 %}
+            <b>Bankiren vann!</b><br>
+    {% elseif bank > 21 and player < 21 %}
+            <b>Du vann!</b><br>
+    {% elseif bank < 21 and player < 21 and bank < player %}
+            <b>Du vann!</b><br>
+    {% else %}
+            <b>Bankiren vann!</b><br>
+    {% endif %}<br>
+
+    <b>Du:
+    {{ player }} Poäng</b><br>
+    {% for card in player_cards %}
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
+    {% endfor %}
+
+    <br>
+    <b>Bank:
+    {{ bank }} Poäng</b><br>
+    {% for card in bank_cards %}
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
+    {% endfor %}<br>
+
+    <form>
+        <input type="button" onclick="location.href='{{ path('game_shuffle') }}';" value="Nytt spel!" />
+    </form>
+    <br><br>
+    
+    
+{% endblock %}

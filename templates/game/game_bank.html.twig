@@ -6,14 +6,36 @@
     <h1>Tjugoett</h1>
 
     <h3>Bankens tur</h3>
-
-    <b>Spelare:</b><br>
     {% for card in bank %}
-        <b>{{ card }}</b><br>
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
     {% endfor %}
-
+    <br>
 
     <b>{{ num_cards }}</b><br>
+    
+    <b>Poäng</b>
+    <b>{{ sum_points_bank }}</b><br>
+    {# <b>Bank:</b><br>
+    {% for card in bank %}
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
+    {% endfor %}
+
+    <b>Poäng:</b>
+    <b>{{ sum_points_bank }}</b><br>
+
+    <b>{{ num_cards }}</b><br> #}
     
     
 {% endblock %}
