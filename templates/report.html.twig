@@ -89,13 +89,13 @@
                 <p><b>
                     Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?
                 </b><br><br>
-                    Jag brukar oftast skriva psuedokod när jag programmerar. Först löser man problemet i grova drag i huvudet, och så skriver man ner vad som sker och i vilken ordning för att på så sätt orientera sina tankar. Därefter blir det enklare att programmera då man har ett mål att uppnå. Efter det kan man skriva ny psuedokod som går ner ytterligare i detalj osv tills dess att programmet är färdigt. Flödesdiagram är enligt min mening mest användbart om man ska jobba i grupp/projekt med andra, så att alla har samma bild över vad som ska göras och hur diverse delar ska hänga ihop. 
+                    Jag brukar oftast skriva pseudokod när jag programmerar. Först löser man problemet i grova drag i huvudet, och så skriver man ner vad som sker och i vilken ordning för att på så sätt orientera sina tankar. Därefter blir det enklare att programmera då man har ett mål att uppnå. Efter det kan man skriva ny pseudokod som går ner ytterligare i detalj osv tills dess att programmet är färdigt. Flödesdiagram är enligt min mening mest användbart om man ska jobba i grupp/projekt med andra, så att alla har samma bild över vad som ska göras och hur diverse delar ska hänga ihop. 
                 </p><br>
 
                 <p><b>
                     Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
                 </b><br><br>
-                    Jag är väldigt nöjd med hur jag har löst uppgiften, jag känner att jag har skapat en smidig lösning som uppfyller precis de krav som ställdes i uppgiften. Jag har använt mig av sparsamt med kod i routerna och trots detta uppnåt ett bra resultat. Jag har även använt mig av ett par redirect-routes så att exekvering av kod ska kunna ske utan att användaren/spelaren märker det. En förbättringspotential av spelet skulle vara designen, dock så fanns inte detta med i kraven. Rent 
+                    Jag är väldigt nöjd med hur jag har löst uppgiften, jag känner att jag har skapat en smidig lösning som uppfyller precis de krav som ställdes i uppgiften. Jag har använt mig av sparsamt med kod i routerna och trots detta uppnåt ett bra resultat. Jag har även använt mig av ett par redirect-routes så att exekvering av kod ska kunna ske utan att användaren/spelaren märker det. En förbättringspotential av spelet skulle vara designen, dock så fanns inte detta med i kraven.
                 </p><br>
         
                 <p><b>
@@ -115,33 +115,39 @@
                 <br>
                 <h2><a name="kmom04">Kmom04</a></h2><br>
                 <p><b>
-                    F
+                    Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.
                 </b><br>
-                    T
+                    Jag tycker att själva testandet har fungerar bra, det påminner väldigt mycket om det vi gjorde i Python-kursen när vi testade så i och med det var själva konceptet inte så främmande. Jag hade däremot väldigt stora problem med att få igång själva testandet så att det fungerade på rätt sätt samt, samtidigt generera coverage. Det var svårt att veta vilken mapp allting skulle ligga i förhållande till varandra, och samtidigt var det små variabler i filerna som skulle justeras.
                 </p><br><br>
 
                 <p><b>
-                    F
+                    Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?
                 </b><br><br>
-                    T
+                    Jag lyckades uppnå 100% kodtäckning i mina test. Jag valde att gå in på coverage-sidan och titta vilka delar av funktionerna som det saknades test på för att sedan därefter utöka mina tester med flera olika på samma funktion för att hela funktionen skulle täckas i testandet.
                 </p><br>
         
                 <p><b>
-                    F
+                    Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?
                 </b><br><br>
-                    T
+                    Jag skulle själv vilja påstå att min kod är testbar, eftersom att jag själv lyckades uppnå 100% kodtäckning i mina egna tester. Det som skulle kunna påverka är om det t.ex. hade kommit in något oväntat värde någonstans, så kanske det hade inneburit att vissa delar blir svårare att testa. Programmet är dock skrivet/löst på ett sådant sätt att det aldrig sker några udda inmatningar från/av användaren utan alla de värden som skickas in och ut ur funktioner är kontrollerade genom att användaren istället trycker på knappar så skickas värdena vidare.
                 </p><br>
         
                 <p><b>
-                    F
+                    Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.
                 </b><br><br>
-                    T
+                    Jag har inte skrivit om någon del av mina funktioner/kod. Jag tycker personligen att själva begreppet att skriva om kod för ett tests skull verkar lite fel. Det skulle i så fall vara om man testade en del av sin kod eller en funktion som producerade fel resultat eller var extremt svårtestad skulle man kunna ha övervägt att skriva om den på ett mer 'testvänligt' sätt för att på så sätt också få bättre kontroll över sitt program.
                 </p><br>
         
                 <p><b>
-                    F
+                    Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.
                 </b><br><br>
-                    T
+                    Jag tänkar att om det är tydlig kod som är enkel att förstå vad den gör, och vad den returnerar så anses den som mer testbar, vilket också skulle kunna relatera till "snygg och ren kod". Har man många små funktioner med enkla delar i blir det snygg kod, och det blir dessutom enklare att testa eftersom att det sker mindre saker i själva funktionen.
+                </p><br>
+
+                <p><b>
+                    Vilken är din TIL för detta kmom?
+                </b><br><br>
+                    Denna veckan har jag lärt mig om hur man sätter upp och använder PHPUNIT samt dess fördelar. Hur man tydligt kan se över sin kod, vilka delar som testats och vilka delar det saknas testning på för att enkelt åtgärda detta. Jag har även lärt mig använda PHPDOC för att dokumentera min kod, lite likt det vi gjorde i JS-doc.
                 </p><br>
             </section>
 

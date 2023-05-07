@@ -4,6 +4,10 @@ namespace App\Deck;
 
 class DeckFunc
 {
+	/**
+	 * removes a card from the deck
+	 * 
+	 */
     public static function remove(array $cards, string $draw_card)
 	{
 		$removed_card = $draw_card;
@@ -14,11 +18,10 @@ class DeckFunc
 		return $cards;
 	}
 
-	public function get_number_cards(array $cards): int
-    {
-        return count($cards);
-    }
-
+	/**
+	 * recreates a deck of cards
+	 * 
+	 */
 	public function recreate(array $cards)
     {
         return $cards;

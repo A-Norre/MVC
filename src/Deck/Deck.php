@@ -6,6 +6,10 @@ use App\Deck\DeckStart;
 class Deck extends DeckFunc
 {
 
+	/**
+	 * assembles a deck of cards
+	 * 
+	 */
 	public static function cards()
 	{
 		$values = array('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A');
@@ -14,6 +18,11 @@ class Deck extends DeckFunc
 
 		return $deck_of_cards->createcards($values, $suits);
 	}
+
+	/**
+	 * shuffles the deck of cards
+	 * 
+	 */
 	public static function shuffle(array $cards)
 	{
 		$total_cards = count($cards);
@@ -29,6 +38,10 @@ class Deck extends DeckFunc
 		return $cards;
 	}
 
+	/**
+	 * draws a card from the deck of cards
+	 * 
+	 */
 	public static function draw(array $cards, int $draw_card = 0)
 	{		
 

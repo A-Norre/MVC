@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Deck\Deck;
 use App\Deck\DeckStart;
+use App\Deck\Game21;
 //use App\Deck\DeckCon;
 
 // kommentar 2
@@ -76,6 +77,7 @@ class GameController extends AbstractController
         }
 
         $deck = new Deck();
+        $rules = new Game21();
         $remaining_cards = array_values($remaining_cards);
 
         $player_card = $deck->draw($remaining_cards);
@@ -96,32 +98,39 @@ class GameController extends AbstractController
         }
 
         $calc_points = $drawn_player;
+        $points_found = 0;
 
-
-        for ($i = 0; $i < count($calc_points); $i++) {
-            $temp = strtok($calc_points[$i], ' ');
-            if ($temp == 'A') {
-                $temp = 1;
-                if ($session->get("sum_points") < 8) {
-                    $temp = 14;
-                }
-            }
-            if ($temp == 'K') {
-                $temp = 13;
-            }
-            if ($temp == 'Q') {
-                $temp = 12;
-            }
-            if ($temp == 'J') {
-                $temp = 11;
-            }
-            $num = (int)$temp;
-            array_push($sum_points, $num);
+        if ($session->get("sum_points")) {
+            $points_found = $session->get("sum_points");
         }
 
-        if (count($sum_points) == 2 && array_sum($sum_points) == 28) {
-            $sum_points = [1, 1];
-        }
+        // for ($i = 0; $i < count($calc_points); $i++) {
+        //     $temp = strtok($calc_points[$i], ' ');
+        //     if ($temp == 'A') {
+        //         $temp = 1;
+        //         if ($session->get("sum_points") < 8) {
+        //             $temp = 14;
+        //         }
+        //     }
+        //     if ($temp == 'K') {
+        //         $temp = 13;
+        //     }
+        //     if ($temp == 'Q') {
+        //         $temp = 12;
+        //     }
+        //     if ($temp == 'J') {
+        //         $temp = 11;
+        //     }
+        //     $num = (int)$temp;
+        //     array_push($sum_points, $num);
+        // }
+
+        // if (count($sum_points) == 2 && array_sum($sum_points) == 28) {
+        //     $sum_points = [1, 1];
+        // }
+        $sum_points = $rules->checkPoints($points_found, $calc_points);
+
+        $sum_points = $rules->checkAces($sum_points);
 
         $session->set("remaining_cards", $remaining_cards);
         $session->set("drawn_players", $drawn_player);
@@ -160,6 +169,7 @@ class GameController extends AbstractController
         }
 
         $deck = new Deck();
+        $rules = new Game21();
         $remaining_cards = array_values($remaining_cards);
 
         $player_card = $deck->draw($remaining_cards);
@@ -169,32 +179,38 @@ class GameController extends AbstractController
         $remaining_cards = array_values($remaining_cards);
 
         $calc_points = $drawn_bank;
+        $points_found = 0;
 
-
-        for ($i = 0; $i < count($calc_points); $i++) {
-            $temp = strtok($calc_points[$i], ' ');
-            if ($temp == 'A') {
-                $temp = 1;
-                if ($session->get("sum_points_bank") < 8) {
-                    $temp = 14;
-                }
-            }
-            if ($temp == 'K') {
-                $temp = 13;
-            }
-            if ($temp == 'Q') {
-                $temp = 12;
-            }
-            if ($temp == 'J') {
-                $temp = 11;
-            }
-            $num = (int)$temp;
-            array_push($sum_points_bank, $num);
+        if ($session->get("sum_points_bank")) {
+            $points_found = $session->get("sum_points_bank");
         }
 
-        if (count($sum_points_bank) == 2 && array_sum($sum_points_bank) == 28) {
-            $sum_points_bank = [1, 1];
-        }
+        // for ($i = 0; $i < count($calc_points); $i++) {
+        //     $temp = strtok($calc_points[$i], ' ');
+        //     if ($temp == 'A') {
+        //         $temp = 1;
+        //         if ($session->get("sum_points_bank") < 8) {
+        //             $temp = 14;
+        //         }
+        //     }
+        //     if ($temp == 'K') {
+        //         $temp = 13;
+        //     }
+        //     if ($temp == 'Q') {
+        //         $temp = 12;
+        //     }
+        //     if ($temp == 'J') {
+        //         $temp = 11;
+        //     }
+        //     $num = (int)$temp;
+        //     array_push($sum_points_bank, $num);
+        // }
+
+        // if (count($sum_points_bank) == 2 && array_sum($sum_points_bank) == 28) {
+        //     $sum_points_bank = [1, 1];
+        // }
+        $sum_points_bank = $rules->checkPoints($points_found, $calc_points);
+        $sum_points_bank = $rules->checkAces($sum_points_bank);
 
         $session->set("remaining_cards", $remaining_cards);
         $session->set("drawn_bank", $drawn_bank);
@@ -229,35 +245,48 @@ class GameController extends AbstractController
             $score_bank = $session->get("score_bank");
         }
 
-        // if ($points_bank > $points_player) {
+        $winner = new Game21();
+        $find_winner = $winner->totalScore($points_bank, $points_player);
+
+        // $score_bank = (int)$score_bank + 1;
+        // $session->set("score_bank", $score_bank);
+        // echo $find_winner;
+
+        if ($find_winner === "player") {
+            $score_player = (int)$score_player + 1;
+            $session->set("score_player", $score_player);
+            // $score_bank = (int)$score_bank - 1;
+            // $session->set("score_bank", $score_bank);
+        }
+        if ($find_winner === "bank") {
+            $score_bank = (int)$score_bank + 1;
+            $session->set("score_bank", $score_bank);
+        }
+        
+        // if ($points_bank == 21) {
         //     $score_bank = (int)$score_bank + 1;
         //     $session->set("score_bank", $score_bank);
         // }
-
-        if ($points_bank == 21) {
-            $score_bank = (int)$score_bank + 1;
-            $session->set("score_bank", $score_bank);
-        }
-        elseif ($points_player == 21) {
-            $score_player = (int)$score_player + 1;
-            $session->set("score_player", $score_player);
-        }
-        elseif ($points_player > 21 && $points_bank < 21) {
-            $score_bank = (int)$score_bank + 1;
-            $session->set("score_bank", $score_bank);
-        }
-        elseif ($points_bank > 21 && $points_player < 21) {
-            $score_player = (int)$score_player + 1;
-            $session->set("score_player", $score_player);
-        }
-        elseif ($points_bank < 21 && $points_player < 21 && $points_bank < $points_player) {
-            $score_player = (int)$score_player + 1;
-            $session->set("score_player", $score_player);
-        }
-        else {
-            $score_bank = (int)$score_bank + 1;
-            $session->set("score_bank", $score_bank);
-        }
+        // elseif ($points_player == 21) {
+        //     $score_player = (int)$score_player + 1;
+        //     $session->set("score_player", $score_player);
+        // }
+        // elseif ($points_player > 21 && $points_bank < 21) {
+        //     $score_bank = (int)$score_bank + 1;
+        //     $session->set("score_bank", $score_bank);
+        // }
+        // elseif ($points_bank > 21 && $points_player < 21) {
+        //     $score_player = (int)$score_player + 1;
+        //     $session->set("score_player", $score_player);
+        // }
+        // elseif ($points_bank < 21 && $points_player < 21 && $points_bank < $points_player) {
+        //     $score_player = (int)$score_player + 1;
+        //     $session->set("score_player", $score_player);
+        // }
+        // else {
+        //     $score_bank = (int)$score_bank + 1;
+        //     $session->set("score_bank", $score_bank);
+        // }
 
         $data = [
             "player" => $points_player,
