@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+{# {{products}} #}
+{# <php
+    var_dump(products)
+?> #}
+<h3>Böcker i biblioteket</h3>
+
+{% for product in products %}
+    
+    <a href="{{ path('product_by_id', {id: product.getId()}) }}"><b>{{ product.getTitle() }}</b></a> - <a href="{{ path('product_delete_by_id', {id: product.getId()}) }}">Radera</a><br><br>
+{% endfor %}
+{% endblock %}

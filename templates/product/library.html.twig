@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Böcker!{% endblock %}
+
+{% block body %}
+    <h3>Vad vill du göra?<h3>
+    <a href="{{ path('product_create') }}">Lägg till bok</a><br>
+    <a href="{{ path('product_show_all') }}">Visa böcker</a><br>
+{% endblock %}

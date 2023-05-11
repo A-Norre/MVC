@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+
+
+
+{# <php
+    var_dump(products)
+?> #}
+<h3></h3>
+
+<form method="post" action="{{ path('product_update') }}">
+    <input type="number" value="{{products.getId()}}" name="id" hidden><br><br>
+    <label>Titel:</label><br> 
+    <input type="text" value="{{products.getTitle()}}" name="title"><br><br>
+    <label>ISBN:</label><br>
+    <input type="number" value="{{products.getIsbn()}}" name="isbn"><br><br>
+    <label>Författare:</label><br>
+    <input type="text" value="{{products.getAuthor()}}" name="author"><br><br>
+    <label>Bild:</label><br>
+    {# <input type="text" value="{{products.getImage()}}" name="image"><br><br> #}
+    <img src="{{ asset('img/')}}/{{picture}}" alt="NAN" height="200px"><br><br>
+    <input name="Update" type="submit" value="Uppdatera">
+</form>
+<br><br>
+
+{# {% for product in products %}
+    {{ product.getTitle() }}<br><br>
+{% endfor %} #}
+{% endblock %}

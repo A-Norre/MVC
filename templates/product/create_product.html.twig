@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+<h3>Lägg till en bok</h3>
+<form method="post" action="{{ path('product_create_write') }}">
+    <label>Titel:</label><br>
+    <input type="text" value="" name="title"><br><br>
+    <label>ISBN:</label><br> 
+    <input type="number" value="" name="isbn"><br><br>
+    <label>Författare:</label><br>
+    <input type="text" value="" name="author"><br><br>
+    <label>Bild:</label><br>
+    <input type="text" value="" name="image"><br><br>
+    <input name="Create" type="submit">
+</form>
+<br><br>
+{% endblock %}
