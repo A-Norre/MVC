@@ -97,7 +97,10 @@
             "@auto-scripts"
         ],
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
-        "phpdoc": "tools/phpdoc/phpdoc"
+        "phpdoc": "tools/phpdoc/phpdoc",
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan analyse src",
+        "phpmd": "tools/phpmd/vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode"
     },
     "conflict": {
         "symfony/symfony": "*"
