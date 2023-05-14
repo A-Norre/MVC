@@ -22,7 +22,7 @@ class ProductController extends AbstractController
 
     #[Route('/library', name: 'library')]
     public function library(
-        ManagerRegistry $doctrine
+        // ManagerRegistry $doctrine
     ): Response {
 
         return $this->render('product/library.html.twig');
@@ -30,7 +30,7 @@ class ProductController extends AbstractController
 
     #[Route('/product/create', name: 'product_create')]
     public function createProduct(
-        ManagerRegistry $doctrine
+        // ManagerRegistry $doctrine
     ): Response {
         // $entityManager = $doctrine->getManager();
     
@@ -132,8 +132,10 @@ class ProductController extends AbstractController
         int $isbn
     ): Response {
         // $product = $productRepository->find($id);
+        $id = 0;
         $products = $productRepository->findAll();
-        for ($x = 0; $x < count($products); $x++) {
+        $sumProducts = count($products);
+        for ($x = 0; $x < $sumProducts; $x++) {
             if ($products[$x]->getIsbn() == $isbn) {
                 $id = $products[$x]->getId();
             }

@@ -213,7 +213,7 @@ class GameController extends AbstractController
         $session->set("drawn_bank", $drawn_bank);
         $session->set("sum_points_bank", $sum_points_bank);
 
-        $remaining_cards = array_values($remaining_cards);
+        // $remaining_cards = array_values($remaining_cards);
 
         if (array_sum($sum_points_bank) < 17) {
             return $this->redirectToRoute('game_bank');
