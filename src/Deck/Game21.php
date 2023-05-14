@@ -56,8 +56,9 @@ class Game21
 	public static function checkPoints($points_found, $calc_points)
 	{
 		$sum_points = [];
+		$lenOfPoints = count($calc_points);
 
-		for ($i = 0; $i < count($calc_points); $i++) {
+		for ($i = 0; $i < $lenOfPoints; $i++) {
             $temp = strtok($calc_points[$i], ' ');
             if ($temp == 'A') {
                 $temp = 1;

@@ -33,7 +33,6 @@ class CardControllerJson
 
     #[Route("/api/deck/shuffle", name: "api_shuffle")]
     public function jsonShuffle(
-        Request $request,
         SessionInterface $session
     ): Response
     {
@@ -58,7 +57,6 @@ class CardControllerJson
 
     #[Route('/api/deck/draw', name: "api_draw")]
     public function card_draw(
-        Request $request,
         SessionInterface $session
     ): Response
     {
@@ -103,7 +101,6 @@ class CardControllerJson
     #[Route("/api/deck/draw/{num<\d+>}")]
     public function card_draw_spec(
         int $num,
-        Request $request,
         SessionInterface $session
     ): Response
     {
@@ -128,8 +125,9 @@ class CardControllerJson
                 $remaining_cards = $deck->remove($deck->recreate($remaining_cards), $deck->draw($remaining_cards, $i));    
             }
 
-            $remaining_cards = array_values($remaining_cards);
-            $session->set("remaining_cards", $remaining_cards);
+            // $remaining_cards = array_values($remaining_cards);
+            // $session->set("remaining_cards", $remaining_cards);
+            $session->set("remaining_cards", array_values($remaining_cards));
 
             $data = [
                 "removed" => $removed_card,

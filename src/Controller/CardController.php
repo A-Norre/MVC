@@ -92,8 +92,9 @@ class CardController extends AbstractController
             $remaining_cards = [];
             $deck = new Deck();
             
-            $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
-            $session->set("remaining_cards", $remaining_cards);
+            // $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
+            // $session->set("remaining_cards", $remaining_cards);
+            $session->set("remaining_cards", $deck->remove($deck->cards(), $deck->draw($deck->cards())));
 
             $data = [
                 "removed" => $deck->cards()[0],
@@ -110,7 +111,6 @@ class CardController extends AbstractController
     #[Route("/card/deck/draw/{num<\d+>}", name: "draw_x_card")]
     public function card_draw_spec(
         int $num,
-        Request $request,
         SessionInterface $session
     ): Response
     {

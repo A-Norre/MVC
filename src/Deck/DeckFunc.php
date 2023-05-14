@@ -10,7 +10,7 @@ class DeckFunc
 	 */
     public static function remove(array $cards, string $draw_card)
 	{
-		$removed_card = $draw_card;
+		// $removed_card = $draw_card;
 		if (in_array($draw_card, $cards))
 		{
 			unset($cards[array_search($draw_card, $cards)]);

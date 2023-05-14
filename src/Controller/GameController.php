@@ -31,7 +31,6 @@ class GameController extends AbstractController
 
     #[Route('/game/shuffle', name: "game_shuffle")]
     public function gameShuffle(
-        Request $request,
         SessionInterface $session
     ): Response
     {
@@ -63,12 +62,11 @@ class GameController extends AbstractController
 
     #[Route('/game/start', name: "game_start")]
     public function gameStart(
-        Request $request,
         SessionInterface $session
     ): Response
     {
         $drawn_player = [];
-        $sum_points = [];
+        // $sum_points = [];
         $remaining_cards = $session->get("remaining_cards");
 
         if ($session->get("drawn_players")) {
@@ -151,16 +149,15 @@ class GameController extends AbstractController
 
     #[Route('/game/bank', name: "game_bank")]
     public function gameBank(
-        Request $request,
         SessionInterface $session
     ): Response
     {
-        $bank_stop = false;
+        // $bank_stop = false;
         
         $remaining_cards = $session->get("remaining_cards");
 
         $drawn_bank = [];
-        $sum_points_bank = [];
+        // $sum_points_bank = [];
         $remaining_cards = $session->get("remaining_cards");
 
         if ($session->get("drawn_bank")) {
@@ -227,7 +224,6 @@ class GameController extends AbstractController
 
     #[Route('/game/over', name: "game_over")]
     public function game_over(
-        Request $request,
         SessionInterface $session
     ): Response
     {
@@ -300,7 +296,6 @@ class GameController extends AbstractController
 
     #[Route("/api/game", name: "api_game")]
     public function jsonGame(
-        Request $request,
         SessionInterface $session
     ): Response
     {
