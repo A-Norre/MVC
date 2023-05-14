@@ -79,9 +79,10 @@ class CardController extends AbstractController
             $remaining_cards = array_values($remaining_cards);
            
             $removed_card = $deck->draw($remaining_cards);
-            $remaining_cards = $deck->remove($deck->recreate($remaining_cards), $deck->draw($remaining_cards));
+            // $remaining_cards = $deck->remove($deck->recreate($remaining_cards), $deck->draw($remaining_cards));
             
-            $session->set("remaining_cards", $remaining_cards);
+            // $session->set("remaining_cards", $remaining_cards);
+            $session->set("remaining_cards", $deck->remove($deck->recreate($remaining_cards), $deck->draw($remaining_cards)));
 
             $data = [
                 "removed" => $removed_card,

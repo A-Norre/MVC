@@ -80,8 +80,9 @@ class CardControllerJson
             $remaining_cards = [];
             $deck = new Deck();
             
-            $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
-            $session->set("remaining_cards", $remaining_cards);
+            // $remaining_cards = $deck->remove($deck->cards(), $deck->draw($deck->cards()));
+            // $session->set("remaining_cards", $remaining_cards);
+            $session->set("remaining_cards", $deck->remove($deck->cards(), $deck->draw($deck->cards())));
 
             $data = [
                 "removed" => $deck->cards()[0],

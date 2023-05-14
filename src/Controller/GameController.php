@@ -158,7 +158,7 @@ class GameController extends AbstractController
 
         $drawn_bank = [];
         // $sum_points_bank = [];
-        $remaining_cards = $session->get("remaining_cards");
+        // $remaining_cards = $session->get("remaining_cards");
 
         if ($session->get("drawn_bank")) {
             $drawn_bank = $session->get("drawn_bank");
