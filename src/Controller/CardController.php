@@ -47,7 +47,6 @@ class CardController extends AbstractController
 
     #[Route('/card/deck/shuffle', name: "shuffle_card")]
     public function card_shuffle(
-        Request $request,
         SessionInterface $session
     ): Response
     {
@@ -69,7 +68,6 @@ class CardController extends AbstractController
 
     #[Route('/card/deck/draw', name: "draw_card")]
     public function card_draw(
-        Request $request,
         SessionInterface $session
     ): Response
     {

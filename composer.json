@@ -100,7 +100,7 @@
         "phpdoc": "tools/phpdoc/phpdoc",
         "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json",
         "phpstan": "tools/phpstan/vendor/bin/phpstan analyse src",
-        "phpmd": "tools/phpmd/vendor/bin/phpmd src text cleancode"
+        "phpmd": "tools/phpmd/vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode"
     },
     "conflict": {
         "symfony/symfony": "*"
