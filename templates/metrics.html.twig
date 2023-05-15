@@ -1,0 +1,120 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <h2>Introduktion</h2>
+    <p>
+        Förklara de 6 C:na
+        <h4>Codestyle</h4>
+        Codestyle refererar till hur pass stora klasser och funktioner. Dvs hur långa klasser/funktioner är
+        när man räknar antal rader kod. Stora klasser och metoder kan innebära att koden bli mer svårhanterad,
+        det kan t.ex. bli svårare om behöver göra ändringar i den. Det kan även innebära svårigheter att vidareutveckla koden 
+        om baskoden är väldigt lång.
+
+        <h4>Coverage</h4>
+        Kodtäckning är ett mått på hur väl koden som används är täckt av olika tester. Detta innebär i praktiken hur 
+        stor del av de funktioner som används som det finns tillhörande tester till, och i sin tur och hur stor del av 
+        respektive funktion som testerna täcker. Hög kodtäckning innebär att stora delar av koden är testad vilket i sin tur 
+        innebär ökad trygghet att koden producerar önskat resultat. Låg kodtäckning innebär att det finns en hög risk att 
+        koden kan producera fel resultat, eller att eventuella buggar eller dylikt kan uppstå.
+
+        <h4>Complexity</h4>
+        Desto högre komplexitets-score koden har ju svårare kan det bli att underhålla koden alternativ innebära problem om man skulle 
+        behöva vidareutveckla den. 
+
+        <h4>Cohesion</h4>
+        Hänvisar till hur väl metoder i klasser här ihop med varandra. Ett lågt värde innebär hög sammanhållning, dvs att metoderna 
+        verkligen hör hemma i klassen. Ett högt värde däremot innebär en låg sammanhållning, det betyder att en klass skulle kunna ha 
+        delats upp i flera olika klasser med olika ansvarsområden.
+
+        <h4>Coupling</h4>
+        Coupling är indelat i två kategorier, den första är Afferent coupling (AC). AC är ett mått på antalet klasser som påverkas av en 
+        viss klass. Hög AC innebär att klassen i fråga använder sig av många andra klasser inuti sig själv.
+        Den andra är Efferent coupling (EC). EC är ett mått på antalet klasser som en specifik klass får funktionalitet/effekter från.
+        Hög EC innebär att många andra klasser är beroende och/eller använder sig av funktioner från denna klassen.
+
+        <h4>CRAP</h4>
+        Change Risk Analyzer and Predictor beror på två olika variabler. Den ena är hur pass komplex din kod är medan den ändra är hur pass 
+        vältestad koden är. Har man hög komplexitet kan man ha många tester för att balansera ut CRAP-poängen. 
+
+
+    </p><br>
+
+
+
+    <h2>Phpmetrics</h2>
+    <img src="{{ asset('img/phpmetrics.png') }}" alt="" width="1000x"><br>
+    <p>
+        I koden finns det 6 stycken violations vilket skulle kunna anses som en förbättringspotential. Det som phpmetrics säger om 
+        dessa violations är framförallt att det saknas tester på klasser för controller-klasserna. Anledningen till detta är att det inte har 
+        skapats några tester för dessa klasser, eftersom att det inte har varit del av tidigare kursmoment och samt inte varit del av någon föreläsning.
+    </p>
+
+    <p>
+        Den genomsnittliga komplexiteten för koden är låg vilket tyder på kod som är enkel att ändra och vidareutveckla. Dock så råkar 
+        Game21-klassen hamna desto högre up på skalan i förhållande till de övriga klasser, så detta skulle kunna vara ett ställe där man skulle 
+        kunna se över om det gick att förenkla komplexiteten för att på så sätt undvika framtida problem.
+    </p>
+
+    <p>
+        Trots att den genomsnittliga komplexiteten är relativt låg så får koden en något högt CRAP-score. Förklaringen till detta samt en eventuell 
+        lösning är att testerna enbart täcker de klasser som innehåller funktioner som används i övriga Controller-klasser. I de klasserna är 
+        kodtäckningen 100% vilket är bra, men i de övriga Controller-klasserna saknas det tester vilket därför resulterar i ett onödigt högt 
+        CRAP-score.
+    </p>
+
+    <p>
+        Koden har ett lågt genomsnittligt LCOM-värde. Detta innebär att den koden som finns har stor sammanhållning vilket i sin tur innebär 
+        att funktioner/metoder ligger på rätt ställe i förhållande till klass och användningsområde/syfte. Detta trots att tidigare kursmoment krävt 
+        att koden skulle delas upp i olika klasser för att uppnå arv mm. Frågan är om man kanske kunde uppnåt ett ytterligare lägre LCOM-värde om 
+        de delar som från början var tänkta att ligga i en och samma klass då det hörde ihop hade fått stanna kvar i sin ursprungliga klass?
+    </p>
+
+    <h2>Scrutinizer</h2>
+    <p>
+        I Scrutinizer fick hade koden som utgångspunkt 6,93 i Scrutinizer-betyg. Anledningen till detta var att mappen "tools" togs med 
+        i testet vilket drog ner betyget. Detta var dock allt annat än självklart vid testandets början vilket ledde till att de filerna 
+        som var relaterade till det nyss skrivna kursmomentet redigerades undertiden som den mappen fanns med. Dock så gjorde förbättringarna av 
+        poängterade svagheter i de klasser något utslag på själva Scrutinizer-betyget. När tools-mappen sedan togs bort från testet 
+        (då den inte skulle funnits med från början) ökade Scrutinizer-betyget till 9.82. Detta Scrutinizer-betyget representerar kvalitén på koden 
+        vilket i detta fall skulle innebära väldigt hög kvalité då högsta tänkbara värde är 10.0.
+    </p>
+    <p>
+        Det som Scrutinizer-testet klagade mest på var Coverage vilket enbart nådde upp till 13%. Dock så var anledningen till detta att det enbart 
+        utförts test på de klasser som innehåller funktioner för att köra programmet. I dessa klasser uppgick kodtäckningen till 100%, men i övriga 
+        klasser som innehöll routerna saknades tester. Då testandet av router inte har ingått i något tidigare kursmoment eller föreläsning utgick 
+        därför detta. Däremot eftersom att kodtäckningen var 100% på de klasser där samtliga användna funktioner ingick kan man tycka att detta bör 
+        vara tillräckligt för att vara säker på att de funktioner som används i routerna och i programmets helhet är vältestade och säkra att använda.  
+    </p>
+    <p>
+        Det som kan ifrågasättas vid testandet är varför Scrutinizer fick ett så pass mycket sämre betyg när de php-delar som fanns med i tools-mappen var inkluderade. 
+        Detta borde vara välskriven kod då den ska fungera för att köra andras kod och dessutom ge dem olika betyg på hur pass välskriven deras kod 
+        är samt vilka förbättringsmöjligheter som finns. Tog man dock bort dessa delar kod vars uppgift var att utvärdera andras egenskrivna PHP-kod så ökade Scrutinizer-betyget 
+        till nästan maximalbeloppet. Har detta att göra med hur eller vad det är som Scrutinizer testar? Kanske har olika sorters kod även olika möjlighet att 
+        uppnå ett högt Scrutinizer-betyg beroende på vad kodens syfte är?
+    </p>
+
+    <h2>Förbättringar</h2>
+    <p>
+        välj minst 3 förbättringar som du vill göra:<br><br>
+        Exempel på förbättringar kan vara:<b><br>
+
+        Fixa issues<br>testade att dela upp productcontroller för att få bort error (funkade, fick bort, en tänkbar bugg och ett error)
+        Öka kodtäckning<br>Hade jag vetat att det skulle finnas rum för förbättring hade jag inte satsat på 100% direkt.
+        Fokusera på kvalitetsindex i Scrutinizer<br>gjort små ändringar, för att öka, men läsbarheten av programmet blev sämre
+        Minska komplexiteten i class/metod<br>ändrat i game21-klassen och minskat if-satser för att på så sätt minska komplexiteten, rensat bort två onödiga funktioner, gick från rött till gult
+        i maintainability/complexity
+    </p><br>
+
+     <h2>Diskussion</h2>
+    <p>
+        Diskutera kring vad du har gjort<br><br>
+
+        Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?<br>
+        Finns det fördelar och kanske nackdelar?<br>
+        Ser du andra möjligheter att jobba mot “clean code”?<br>
+    </p><br>
+    
+    
+{% endblock %}

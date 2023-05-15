@@ -12,14 +12,8 @@ class Game21
 	{
 		$winner = "bank";
 
-		if ($points_bank == 21) {
-			$winner = "bank";
-        }
-        elseif ($points_player == 21) {
+        if ($points_player == 21 && $points_bank != 21) {
 			$winner = "player";
-        }
-        elseif ($points_player > 21 && $points_bank < 21) {
-			$winner = "bank";
         }
         elseif ($points_bank > 21 && $points_player < 21) {
 			$winner = "player";

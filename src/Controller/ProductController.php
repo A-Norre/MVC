@@ -12,13 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    #[Route('/product', name: 'app_product')]
-    public function index(): Response
-    {
-        return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
-        ]);
-    }
 
     #[Route('/library', name: 'library')]
     public function library(
@@ -26,6 +19,14 @@ class ProductController extends AbstractController
     ): Response {
 
         return $this->render('product/library.html.twig');
+    }
+
+    #[Route('/product', name: 'app_product')]
+    public function index(): Response
+    {
+        return $this->render('product/index.html.twig', [
+            'controller_name' => 'ProductController',
+        ]);
     }
 
     #[Route('/product/create', name: 'product_create')]
@@ -81,19 +82,6 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('product_create');
     }
 
-    #[Route('/product/library/books', name: 'product_show_all_api')]
-    public function showAllProductApi(
-        ProductRepository $productRepository
-    ): Response {
-        $products = $productRepository->findAll();
-    
-        // return $this->json($products);
-        $response = $this->json($products);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
 
     #[Route('/product/show', name: 'product_show_all')]
     public function showAllProduct(
@@ -124,32 +112,6 @@ class ProductController extends AbstractController
         ];
 
         return $this->render('product/product_show_spec.html.twig', $data);
-    }
-
-    #[Route('/product/library/book/{isbn}', name: 'product_by_id_api')]
-    public function showProductByIdApi(
-        ProductRepository $productRepository,
-        int $isbn
-    ): Response {
-        // $product = $productRepository->find($id);
-        $id = 0;
-        $products = $productRepository->findAll();
-        $sumProducts = count($products);
-        for ($x = 0; $x < $sumProducts; $x++) {
-            if ($products[$x]->getIsbn() == $isbn) {
-                $id = $products[$x]->getId();
-            }
-        }
-
-        $product = $productRepository->find($id);
-
-        $response = $this->json($product);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-
-        //return $this->json($product);
     }
 
     #[Route('/product/delete/{id}', name: 'product_delete_by_id')]
@@ -196,5 +158,11 @@ class ProductController extends AbstractController
         $productRepository->save($product, true);
 
         return $this->redirectToRoute('product_show_all');
+    }
+
+    #[Route('/metrics', name: 'metrics')]
+    public function metrics(): Response
+    {
+        return $this->render('metrics.html.twig');
     }
 }
