@@ -5,7 +5,6 @@
 {% block body %}
     <h2>Introduktion</h2>
     <p>
-        Förklara de 6 C:na
         <h4>Codestyle</h4>
         Codestyle refererar till hur pass stora klasser och funktioner. Dvs hur långa klasser/funktioner är
         när man räknar antal rader kod. Stora klasser och metoder kan innebära att koden bli mer svårhanterad,
@@ -94,26 +93,107 @@
         till nästan maximalbeloppet. Har detta att göra med hur eller vad det är som Scrutinizer testar? Kanske har olika sorters kod även olika möjlighet att 
         uppnå ett högt Scrutinizer-betyg beroende på vad kodens syfte är?
     </p>
+        <a href="https://scrutinizer-ci.com/g/A-Norre/MVC_report/"><img src="{{ asset('img/scrut.png') }}" alt="" width="100x"></a><br>
+        <a href="https://scrutinizer-ci.com/g/A-Norre/MVC_report/code-structure/main/code-coverage/src/"><img src="{{ asset('img/coverage.png') }}" alt="" width="100x"></a><br>
+        <a href="https://scrutinizer-ci.com/g/A-Norre/MVC_report/inspections/a99afcb4-8535-4292-8a86-5bed241a1a7f/log"><img src="{{ asset('img/build.png') }}" alt="" width="100x" height="18px"></a><br>
+
+
 
     <h2>Förbättringar</h2>
-    <p>
-        välj minst 3 förbättringar som du vill göra:<br><br>
-        Exempel på förbättringar kan vara:<b><br>
+        <p>
+            De förbättringar som förväntas undersökas är de olika issues/violations som dyker upp i phpmetrics för att se över om det går 
+            att åtgärda något eller några av dessa. I dagsläget påpekar den buggar, dock så är den genomsnittliga mängden buggar väldigt låg, det finns 
+            dock ett error med då den klagar på något vilket hade varit bra att kunna åtgärda.
+        </p>
 
-        Fixa issues<br>testade att dela upp productcontroller för att få bort error (funkade, fick bort, en tänkbar bugg och ett error)
-        Öka kodtäckning<br>Hade jag vetat att det skulle finnas rum för förbättring hade jag inte satsat på 100% direkt.
-        Fokusera på kvalitetsindex i Scrutinizer<br>gjort små ändringar, för att öka, men läsbarheten av programmet blev sämre
-        Minska komplexiteten i class/metod<br>ändrat i game21-klassen och minskat if-satser för att på så sätt minska komplexiteten, rensat bort två onödiga funktioner, gick från rött till gult
-        i maintainability/complexity
-    </p><br>
+        <p>
+            En ytterligare förbättringsmöjlighet är komplexiteten i koden samt dess underhållningsmöjlighet. Det som utmärker sig är Game21-klassen 
+            som har en röd cirkel vilket tyder på hög komplexitet samt dålig underhållningsmöjlighet, denna hade varit bra att försöka åtgärda något.
+        </p>
+
+        <p>
+            Från början var Scrutinizers kvalitetsindex 6,93. Därefter justerades de påpekade felen som var relaterade till den egenskriva koden. 
+            Dock så hade detta i dåläget ingen synlig påverkar på kvalitetsindexet, detta kan dock ha berott på att mängden kod då tools-mappen var 
+            inkluderad var betydligt större för när den togs bort så ökades kvalitetsindexet till 9,82 vilket inte lämnar speciellt stort utrymme till 
+            förbättring men det hade ändå varit intressant att försöka förbättra den ytterligare om möjligt.
+        </p>
+
+        <h2>Efter implementerade förbättringar:</h2>
+
+        <p>
+            Värt att notera är tyvärr att det inte finns någon möjlighet att få tag på historik i phpmetrics då den uppdaterar alla värden varje gång 
+            vilket gör det svårt att konkret redovisa resultat med före och efterbilder. Med lyckades jag få bort en av de buggar som phpmetrics påpekade samt 
+            att även felet (error) försvann. Det jag gjorde var att jag delade upp min ProductController till en ytterligare klass vid namn ProductControllerAPI 
+            där samtliga API relaterade delar placerades. Det gjorde så att buggen samt felet försvann. Det bidrog dessutom även till att LCOM minskade från 2.49 
+            till 1,8 vilket är ett lågt och bra värde.
+
+            <br><img src="{{ asset('img/lcom.png') }}" alt="" width="200x">
+        </p>
+
+        <p>
+            Jag lyckades även simplifiera Game21-klassen något, där jag i metoden totalScore lyckades rensa bort onödiga if-satser för att på så 
+            sätt minska kodens komplexitet och öka kodens underhållningsmöjlighet. Istället för att kolla när banken vann så sätts banken som 
+            default-vinnare. Skulle något av de övriga if-satserna stämma betyder det att spelaren har vunnit istället och då ändras "winner"-variabeln. 
+            På så sätt kunde färre antal if-satser användas då banken inte behövde några if-satser längre vilket bidrog till minskad komplexitet.
+            Detta resulterade även till att klassen representerades av en 
+            gul cirkel istället för en röd vilket tyder på ett positivt resultat. Det är dock så att den koden som finns är till för att räkna fram 
+            poängen i ett relativt komplext poängsystem så det är svårt att få ner den ytterligare.
+
+            <br><img src="{{ asset('img/game21.png') }}" alt="" width="500x"><br>
+            <h5>Före:</h5>
+            <img src="{{ asset('img/komplexitetold.png') }}" alt="" width="500x"><br>
+            <h5>Efter:</h5>
+            <img src="{{ asset('img/komplexitet.png') }}" alt="" width="400x"><br>
+        </p>
+
+        <p>
+            I och med ovan nämnda förbättringar så innebar det att kvalitetsindexet ökade mer en sparsam mängd. Den gick från 9,82 till 9,83. Detta 
+            är med tanke på den låga förbättringspotential som finns kvar i kvalitetsindexet en bra procentuell ökning av kvarstående procent. Ökning 
+            beror troligtvis mest på att Game21-klassen förenklades vilket tyder på att kodkvalitén också ökade i och med detta.
+
+            <br><img src="{{ asset('img/scrut1.png') }}" alt="" width="200x">&nbsp&nbsp<img src="{{ asset('img/scrut2.png') }}" alt="" width="200x">
+
+        </p>
+    <br>
 
      <h2>Diskussion</h2>
     <p>
-        Diskutera kring vad du har gjort<br><br>
-
-        Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?<br>
-        Finns det fördelar och kanske nackdelar?<br>
-        Ser du andra möjligheter att jobba mot “clean code”?<br>
+        Det går säkert att arbeta aktivt med kodkvalitet på detta sättet, frågan är vem som har definierat vad "clean code" är.
+        Som exempel så ansåg scrutinizer att jag hade "död kod" när jag körde ett antal funktioner i rad på ett objekt för att 
+        därefter mata in resultatet i en variabel som jag hade döpt till ett lämpligt namn för att förklara vad resultatet av funktioner var 
+        och samtidigt vad variabeln innehöll, i detta fall "remaining cards". Enligt scrutinizer så var denna extra variabeln överflödig då 
+        koden i nästa steg matade in variabeln i en sessionsvariabel. För att lösa anmärkningen så skippade jag mellanvariabeln och körde istället 
+        hela kodraden med alla funktionerna rakt in i sessionen. Resultatet blev att det blev en rad kortare kod, omärkbar skillnad i hastighet men betydligt mer 
+        svårlästkod. 
+        <h5>Före:</h5>
+        <img src="{{ asset('img/dirtycode.png') }}" alt="" width="500x">
+        <h5>Efter:</h5>
+        <img src="{{ asset('img/cleancode.png') }}" alt="" width="600x">
+        <br>
+    </p>
+    <p>
+        Enligt min mening så är Clean code något subjektivt. I olika personers ögon anses samma kod kanske inte som Clean code för samtliga. 
+        Enligt scrutinizer så verkar det som att samtliga delar ska förkortas så långt det bara går. Man kan då fråga sig, var går gränsen? Och till 
+        vilken nytta? Är det bara kort kod som man är ute efter kanske man bör i så fall även spara in på längden av variabelnamn. En annnan tanke är om det 
+        är så att koden enbart ska gå fort att köra för att anses som Clean code så kan man t.ex göra om float-tal till 
+        en mängd olika integers för att i slutändan när float-talet krävs göras om tillbaka till ett float-tal för att på så sätt spara mängden data 
+        som koden behöver komma ihåg/läsa/flytta.
+    </p>
+    <p>
+        Personligen så är Clean code enligt mig kod som är enkel att förstå och sätta sig in i. Ibland kanske det inte är optimalt för ett program 
+        att all kod är nestlad till det maximala, utan istället dela upp koden på några ytterligare rader så att om man vid behov behöver gå tillbaka och justera 
+        något har det enklare att förstå vad som sker. Det kan ytterligare förenklas genom att välja beskrivande variabelnamn så att man enbart genom att 
+        läsa kan förstå vad variabeln innehåller. Samma gäller funktioner och metoder, har man tydliga namn på dessa som beskriver vad som sker och eventuellt 
+        även vad som returneras kan man undvika att behöva gå in i varenda funktion för att försöka förstå flödet. 
+    </p>
+    <p>
+        I uppgiften vi precis har genomfört så fick jag en högt scrutinizer-betyg vilket verkar tyda på hög kvalitet av koden. Jag valde från början 
+        medvetet att försöka hålla min kod och mitt program så sparsamt som möjligt och inte göra några överdriva objekt eller överflödiga funktioner 
+        för att lösa problemet. Resultatet av detta blev att jag fick ett högt betyg direkt när jag körde min kod. Trots att koden enbart nådde upp till 
+        13% i coverage så berättar inte detta hela sanningen. De klasser som innehåller de funktioner som används i de olika Controller-klasserna har en 
+        gemensam kodtäckning på 100%. Det betyder att alla funktioner som används är testade till 100% vilket också gick relativt smidigt då den 
+        grundläggande koden var så pass "ren" som möjligt från början. Dock så tar inte scrutinizer hänsyn till vilken kod som används och till vad, 
+        utan den förväntar sig att samtliga klasser bör ha test, så helhetsbetyget blev därför istället 13% när alla Controller-klasser tagits med i beräkningen.
     </p><br>
     
     
