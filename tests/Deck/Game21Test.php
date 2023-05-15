@@ -45,8 +45,8 @@ class Game21Test extends \PHPUnit\Framework\TestCase {
 
     public function testCheckPoints() {
         $rules = new Game21();
-        $deck1 = new Deck();
-        $deck2 = new Deck();
+        // $deck1 = new Deck();
+        // $deck2 = new Deck();
         $hand = [];
 
         array_push($hand, 'A ♥');
