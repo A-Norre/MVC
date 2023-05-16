@@ -189,33 +189,30 @@
                 <br>
                 <h2><a name="kmom06">Kmom06</a></h2><br>
                 <p><b>
-                    F
+                    Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? Var det några särskilda metrics eller bilder du uppskattade?
                 </b><br><br>
-                    T
+                    Jag tycker att det fungerade bra och gav tydlig information i form av bilder och koefficienter. Det som jag hade önskat var något att förhålla sig till när det gäller mättal. T.ex. för varje resultat kunde det också skrivits ut 
+                    vad som ansågs som ett högt/lågt eller bra/dåligt värde så att man kunde bilda sig en uppfattning om det behövdes justeras annars tvingas man antingen hålla alla mättal i huvudet eller söka up vad som anses som bra/dåligt för varje, varje gång man läser ett mättal. Jag gillade mättalet LCOM som visar hur pass bra sammanhållning koden i de olika klasserna har. Det mättal tyder på att saker som hör ihop bör också ligga i samma klass, vilket i sin tur innebär att 
+                    det inte alltid är rätt att dela upp saker i för många olika klasser. Det var även intressant att se hur komplex kod man hade skrivit samt om det var många tänkbara buggar i klasserna. Något annat som var intressant var Object relations. Om man tittar på sammanställningen för Object relations så inser man ganska omgående hur väldigt komplicerat det kan bli med för många olika klasser som ärver från varandra osv. Om man ska lösa ett problem med nestlad kod gäller det att man har koll på alla grenar i diagrammet så att man vet hur man ska lösa upp knuten.
                 </p><br>
 
                 <p><b>
-                    F
+                    Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? Vilken kodtäckning och kodkvalitet fick du efter första bygget?
                 </b><br><br>
-                    T
+                    Jag hade problem från början då scrutinizer gjorde kvalitetstestet med min tools-mapp inkluderad. Då fick jag 6,93 som scrutinizer-betyg vilket inte är extremt dåligt trots allt. När jag sedan insåg att denna mappen inte skulle tas med då jag inte skrivit någon utav koden där i så fick jag 9,82 i scrutinizer-betyg på första riktiga körningen. Detta betyg var jag nöjd med då det var nästan maximalpoäng direkt. Jag var mindre nöjd med mitt coverage-betyg som enbart visade 100%. Anledningen till detta var att scrutinizer tog med samtliga klasser, dvs även de klasser som innehöll alla routes som inte hade några tillhörande test. Jag hade enbart gjort tester på de klasser som innehöll 
+                    de funktioner som används i programmet. I samtliga av alla de klasserna hade jag uppnått en kodtäckning som var 100%. Så trots att coverage enbart visar 13% så är egentliga 100% av de funktioner som används i programmet testade, vilket jag är nöjd med. Det verkar i sin helhet vara ett bra verktyg då man kan få feedback på sin kod och saker man bör ändra, dock så håller jag kanske inte med om alla ändringar den föreslog men för att uppnå hög kodkvalitet i detta fallet var det bara att hålla med.
                 </p><br>
         
                 <p><b>
-                    F
+                    Hur är din egen syn på kodkvalitet, berätta lite om den? Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du?
                 </b><br><br>
-                    T
+                    Jag tror att kodkvalitet är ett subjektivt ämne. Personligen så är kodkvalitet för mig kod som är enkel att sätta sig in i/förstå och enkel att göra justeringar i. Det kan bland annat handla om hur man väljer att lösa problem med if-satser och loopar, till vad man har namngivit sina variabler och metoder. Ofta så pratas det mycket om att man ska korta ner koden så mycket det bara går, men enligt mig så blir den obegriplig om man behöver gå tillbaka och ändra i den eller ännu värre om man behöver ändra i någon annans kod. Om man t.ex. kodar ett projekt med 20 olika objekt i som i sin tur har 10 funktioner vardera blir det väldigt svårt att hålla rätt på vad som är vad. I ett sådant fall blir det därför väldigt komplicerat om man kör samtliga 20 objekt med varsin tillhörande funktion på en och samma rad. Jag är därför för att man behöver ha vissa "avlastningszoner" i sin kod, med detta menar jag att man kör vissa delar av koden och kommer fram till ett resultat. Därefter kör man en bit till och kommer fram till ett ytterligare resultat. Skulle man vid senare tillfälle behöva gå tillbaka och se över vad som producerar vad, eventuellt ändra något blir det då betydlig enklare än om man har 10 olika funktioner på en och samma rad som tillsammans bildar ett gemensamt slutresultat.
                 </p><br>
         
                 <p><b>
-                    F
+                    Vilken är din TIL för detta kmom?
                 </b><br><br>
-                    T
-                </p><br>
-        
-                <p><b>
-                    F
-                </b><br><br>
-                    T
+                    Detta kursmomentet har jag lärt mig att det lönar sig att försöka hålla sin kod så smidig som möjligt från början och inte dra iväg med några extrema lösningar då det inte är motiverat. När man kör verktyg som t.ex. phpmetrics eller scrutinizer är det därför enklare att justera sin kod och samtidigt uppnå ett högre kvalitetsbetyg/lägre komplexitets-betyg, än om man hade satsat på väldigt komplicerade lösningar bara för saks skull. 
                 </p><br>
             </section>
         </article>

@@ -57,7 +57,7 @@
     </p>
 
     <p>
-        Trots att den genomsnittliga komplexiteten är relativt låg så får koden en något högt CRAP-score. Förklaringen till detta samt en eventuell 
+        Trots att den genomsnittliga komplexiteten är relativt låg så får koden ett något högt CRAP-score. Förklaringen till detta samt en eventuell 
         lösning är att testerna enbart täcker de klasser som innehåller funktioner som används i övriga Controller-klasser. I de klasserna är 
         kodtäckningen 100% vilket är bra, men i de övriga Controller-klasserna saknas det tester vilket därför resulterar i ett onödigt högt 
         CRAP-score.
@@ -67,7 +67,7 @@
         Koden har ett lågt genomsnittligt LCOM-värde. Detta innebär att den koden som finns har stor sammanhållning vilket i sin tur innebär 
         att funktioner/metoder ligger på rätt ställe i förhållande till klass och användningsområde/syfte. Detta trots att tidigare kursmoment krävt 
         att koden skulle delas upp i olika klasser för att uppnå arv mm. Frågan är om man kanske kunde uppnåt ett ytterligare lägre LCOM-värde om 
-        de delar som från början var tänkta att ligga i en och samma klass då det hörde ihop hade fått stanna kvar i sin ursprungliga klass?
+        de delar som från början var tänkta att ligga i en och samma klass då de ansågs höra ihop hade fått stanna kvar i sin ursprungliga klass?
     </p>
 
     <h2>Scrutinizer</h2>
@@ -76,21 +76,21 @@
         i testet vilket drog ner betyget. Detta var dock allt annat än självklart vid testandets början vilket ledde till att de filerna 
         som var relaterade till det nyss skrivna kursmomentet redigerades undertiden som den mappen fanns med. Dock så gjorde förbättringarna av 
         poängterade svagheter i de klasser något utslag på själva Scrutinizer-betyget. När tools-mappen sedan togs bort från testet 
-        (då den inte skulle funnits med från början) ökade Scrutinizer-betyget till 9.82. Detta Scrutinizer-betyget representerar kvalitén på koden 
-        vilket i detta fall skulle innebära väldigt hög kvalité då högsta tänkbara värde är 10.0.
+        (då den inte skulle funnits med från början) ökade Scrutinizer-betyget till 9.82. Detta Scrutinizer-betyget representerar kvaliteten på koden 
+        vilket i detta fall skulle innebära väldigt hög kvalitet då högsta tänkbara värde är 10.0.
     </p>
     <p>
         Det som Scrutinizer-testet klagade mest på var Coverage vilket enbart nådde upp till 13%. Dock så var anledningen till detta att det enbart 
         utförts test på de klasser som innehåller funktioner för att köra programmet. I dessa klasser uppgick kodtäckningen till 100%, men i övriga 
         klasser som innehöll routerna saknades tester. Då testandet av router inte har ingått i något tidigare kursmoment eller föreläsning utgick 
-        därför detta. Däremot eftersom att kodtäckningen var 100% på de klasser där samtliga användna funktioner ingick kan man tycka att detta bör 
+        därför detta. Däremot eftersom att kodtäckningen var 100% på de klasser där samtliga använda funktioner ingick kan man tycka att detta bör 
         vara tillräckligt för att vara säker på att de funktioner som används i routerna och i programmets helhet är vältestade och säkra att använda.  
     </p>
     <p>
         Det som kan ifrågasättas vid testandet är varför Scrutinizer fick ett så pass mycket sämre betyg när de php-delar som fanns med i tools-mappen var inkluderade. 
         Detta borde vara välskriven kod då den ska fungera för att köra andras kod och dessutom ge dem olika betyg på hur pass välskriven deras kod 
-        är samt vilka förbättringsmöjligheter som finns. Tog man dock bort dessa delar kod vars uppgift var att utvärdera andras egenskrivna PHP-kod så ökade Scrutinizer-betyget 
-        till nästan maximalbeloppet. Har detta att göra med hur eller vad det är som Scrutinizer testar? Kanske har olika sorters kod även olika möjlighet att 
+        är samt vilka förbättringsmöjligheter som finns. Tog man dock bort dessa delar kod vars uppgift var att utvärdera andras egenskrivna PHP-kod så ökade Scrutinizer-betyget. 
+        Har detta att göra med hur eller vad det är som Scrutinizer testar? Kanske har olika sorters kod även olika möjlighet att 
         uppnå ett högt Scrutinizer-betyg beroende på vad kodens syfte är?
     </p>
         <a href="https://scrutinizer-ci.com/g/A-Norre/MVC_report/"><img src="{{ asset('img/scrut.png') }}" alt="" width="100x"></a><br>
@@ -114,7 +114,7 @@
         <p>
             Från början var Scrutinizers kvalitetsindex 6,93. Därefter justerades de påpekade felen som var relaterade till den egenskriva koden. 
             Dock så hade detta i dåläget ingen synlig påverkar på kvalitetsindexet, detta kan dock ha berott på att mängden kod då tools-mappen var 
-            inkluderad var betydligt större för när den togs bort så ökades kvalitetsindexet till 9,82 vilket inte lämnar speciellt stort utrymme till 
+            inkluderad var betydligt större, för när den togs bort så ökades kvalitetsindexet till 9,82 vilket inte lämnar speciellt stort utrymme till 
             förbättring men det hade ändå varit intressant att försöka förbättra den ytterligare om möjligt.
         </p>
 
@@ -122,7 +122,7 @@
 
         <p>
             Värt att notera är tyvärr att det inte finns någon möjlighet att få tag på historik i phpmetrics då den uppdaterar alla värden varje gång 
-            vilket gör det svårt att konkret redovisa resultat med före och efterbilder. Med lyckades jag få bort en av de buggar som phpmetrics påpekade samt 
+            vilket gör det svårt att konkret redovisa resultat med före och efterbilder. Jag lyckades få bort en av de buggar som phpmetrics påpekade samt 
             att även felet (error) försvann. Det jag gjorde var att jag delade upp min ProductController till en ytterligare klass vid namn ProductControllerAPI 
             där samtliga API relaterade delar placerades. Det gjorde så att buggen samt felet försvann. Det bidrog dessutom även till att LCOM minskade från 2.49 
             till 1,8 vilket är ett lågt och bra värde.
@@ -132,8 +132,8 @@
 
         <p>
             Jag lyckades även simplifiera Game21-klassen något, där jag i metoden totalScore lyckades rensa bort onödiga if-satser för att på så 
-            sätt minska kodens komplexitet och öka kodens underhållningsmöjlighet. Istället för att kolla när banken vann så sätts banken som 
-            default-vinnare. Skulle något av de övriga if-satserna stämma betyder det att spelaren har vunnit istället och då ändras "winner"-variabeln. 
+            sätt minska kodens komplexitet och förbättra kodens underhållningsmöjlighet. Istället för att kolla när banken vann så sätts banken som 
+            default-vinnare. Skulle något av de övriga if-satserna stämma betyder det att spelaren har vunnit istället och då ändras "winner"-variabeln till "player". 
             På så sätt kunde färre antal if-satser användas då banken inte behövde några if-satser längre vilket bidrog till minskad komplexitet.
             Detta resulterade även till att klassen representerades av en 
             gul cirkel istället för en röd vilket tyder på ett positivt resultat. Det är dock så att den koden som finns är till för att räkna fram 
@@ -148,8 +148,8 @@
 
         <p>
             I och med ovan nämnda förbättringar så innebar det att kvalitetsindexet ökade mer en sparsam mängd. Den gick från 9,82 till 9,83. Detta 
-            är med tanke på den låga förbättringspotential som finns kvar i kvalitetsindexet en bra procentuell ökning av kvarstående procent. Ökning 
-            beror troligtvis mest på att Game21-klassen förenklades vilket tyder på att kodkvalitén också ökade i och med detta.
+            är med tanke på den låga förbättringspotential som fanns kvar i kvalitetsindexet en bra procentuell ökning av kvarstående procent. Ökningen 
+            beror troligtvis mest på att Game21-klassen förenklades vilket tyder på att kodkvaliteten också ökade i och med detta.
 
             <br><img src="{{ asset('img/scrut1.png') }}" alt="" width="200x">&nbsp&nbsp<img src="{{ asset('img/scrut2.png') }}" alt="" width="200x">
 
@@ -174,22 +174,22 @@
     <p>
         Enligt min mening så är Clean code något subjektivt. I olika personers ögon anses samma kod kanske inte som Clean code för samtliga. 
         Enligt scrutinizer så verkar det som att samtliga delar ska förkortas så långt det bara går. Man kan då fråga sig, var går gränsen? Och till 
-        vilken nytta? Är det bara kort kod som man är ute efter kanske man bör i så fall även spara in på längden av variabelnamn. En annnan tanke är om det 
+        vilken nytta? Är det bara kort kod som man är ute efter bör man kanske i så fall även spara in på längden av variabelnamn. En annnan tanke är om det 
         är så att koden enbart ska gå fort att köra för att anses som Clean code så kan man t.ex göra om float-tal till 
         en mängd olika integers för att i slutändan när float-talet krävs göras om tillbaka till ett float-tal för att på så sätt spara mängden data 
         som koden behöver komma ihåg/läsa/flytta.
     </p>
     <p>
         Personligen så är Clean code enligt mig kod som är enkel att förstå och sätta sig in i. Ibland kanske det inte är optimalt för ett program 
-        att all kod är nestlad till det maximala, utan istället dela upp koden på några ytterligare rader så att om man vid behov behöver gå tillbaka och justera 
+        att all kod är nestlad till det maximala, utan istället dela upp koden på några ytterligare rader så att om man vid behov kan gå tillbaka och justera 
         något har det enklare att förstå vad som sker. Det kan ytterligare förenklas genom att välja beskrivande variabelnamn så att man enbart genom att 
         läsa kan förstå vad variabeln innehåller. Samma gäller funktioner och metoder, har man tydliga namn på dessa som beskriver vad som sker och eventuellt 
         även vad som returneras kan man undvika att behöva gå in i varenda funktion för att försöka förstå flödet. 
     </p>
     <p>
-        I uppgiften vi precis har genomfört så fick jag en högt scrutinizer-betyg vilket verkar tyda på hög kvalitet av koden. Jag valde från början 
-        medvetet att försöka hålla min kod och mitt program så sparsamt som möjligt och inte göra några överdriva objekt eller överflödiga funktioner 
-        för att lösa problemet. Resultatet av detta blev att jag fick ett högt betyg direkt när jag körde min kod. Trots att koden enbart nådde upp till 
+        I uppgiften vi precis har genomfört så fick jag en högt scrutinizer-betyg vilket verkar tyda på hög kvalitet på koden. Jag valde från början 
+        medvetet att försöka hålla min kod och mitt program så sparsamt som möjligt och inte göra några överdrivna objekt eller överflödiga funktioner 
+        för att lösa problemen. Resultatet av detta blev att jag fick ett högt betyg direkt när jag körde min kod. Trots att koden enbart nådde upp till 
         13% i coverage så berättar inte detta hela sanningen. De klasser som innehåller de funktioner som används i de olika Controller-klasserna har en 
         gemensam kodtäckning på 100%. Det betyder att alla funktioner som används är testade till 100% vilket också gick relativt smidigt då den 
         grundläggande koden var så pass "ren" som möjligt från början. Dock så tar inte scrutinizer hänsyn till vilken kod som används och till vad, 
