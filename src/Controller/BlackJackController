@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Deck\Deck;
+use App\Deck\DeckStart;
+use App\Deck\Game21;
+//use App\Deck\DeckCon;
+
+// kommentar 2
+
+class BlackJackController extends AbstractController
+{
+    // #[Route('/game/blackjack', name: "game_blackjack")]
+    // public function gameBlackJack(): Response
+    // {
+    //     echo "hej";
+    // }
+}
+
+

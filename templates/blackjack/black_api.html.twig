@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block body %}
+    <h1>API</h1>
+    <a href="{{ path('blackjack_api_winnings') }}">Winnings</a><br>
+    <a href="{{ path('blackjack_api_losses') }}">Losses</a><br>
+    <a href="{{ path('blackjack_api_self') }}">Testa blackjack mot dig själv</a><br>
+
+
+<br><br>
+<h3>Vunna pengar (kr)</h3>
+
+<form method="post" action="{{ path('blackjack_api_stats_winnings') }}">
+    <label>Spelare 1</label>
+    <input type="radio" value="1" name="id"><br>
+    <label>Spelare 2</label>
+    <input type="radio" value="2" name="id"><br>
+    <label>Spelare 3</label>
+    <input type="radio" value="3" name="id"><br>
+    <input name="Update" type="submit" value="Se intäkter"><br>
+</form>
+
+<h3>Förlorade pengar (kr)</h3>
+
+<form method="post" action="{{ path('blackjack_api_stats_loss') }}">
+    <label>Spelare 1</label>
+    <input type="radio" value="1" name="id"><br>
+    <label>Spelare 2</label>
+    <input type="radio" value="2" name="id"><br>
+    <label>Spelare 3</label>
+    <input type="radio" value="3" name="id"><br>
+    <input name="Update" type="submit" value="Se intäkter"><br>
+</form>
+
+<br><br>
+
+    {# <h3>Hur mycket har spelarna vunnit (kr):</h3>
+    <a href="{{ path('blackjack_api_stats_winnings', {id: 1}) }}">Spelare 1</a><br>
+    <a href="{{ path('blackjack_api_stats_winnings', {id: 2}) }}">Spelare 2</a><br>
+    <a href="{{ path('blackjack_api_stats_winnings', {id: 3}) }}">Spelare 3</a><br>
+
+        
+    <h3>Hur mycket har spelarna förlorat (kr):</h3>
+    <a href="{{ path('blackjack_api_stats_loss', {id: 1}) }}">Spelare 1</a><br>
+    <a href="{{ path('blackjack_api_stats_loss', {id: 2}) }}">Spelare 2</a><br>
+    <a href="{{ path('blackjack_api_stats_loss', {id: 3}) }}">Spelare 3</a><br> #}
+
+    
+{% endblock %}

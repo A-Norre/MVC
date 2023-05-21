@@ -43,6 +43,20 @@ class Game21Test extends \PHPUnit\Framework\TestCase {
         $this->assertEquals('player', $decide_winner);
     }
 
+    public function testTotalScore6() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(19, 19);
+        
+        $this->assertEquals('bank', $decide_winner);
+    }
+
+    public function testTotalScore7() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(19, 18);
+        
+        $this->assertEquals('bank', $decide_winner);
+    }
+
     public function testCheckPoints() {
         $rules = new Game21();
         // $deck1 = new Deck();
@@ -111,5 +125,31 @@ class Game21Test extends \PHPUnit\Framework\TestCase {
         $sum_points = $rules->checkAces($sum_points);
         
         $this->assertEquals([1,1,1,1], $sum_points);
+    }
+
+    public function testCheckAcesB() {
+        $rules = new Game21();
+        $hand = [];
+
+        array_push($hand, 'A ♥');
+        array_push($hand, 'A ♦');
+
+        $sum_points = $rules->checkPointsB(0, $hand);
+        $sum_points = $rules->checkAcesB($sum_points);
+        
+        $this->assertEquals([11,1], $sum_points);
+    }
+
+    public function testCheckpoints3() {
+        $rules = new Game21();
+        $hand = [];
+
+        array_push($hand, 'K ♥');
+        array_push($hand, 'Q ♦');
+
+        $sum_points = $rules->checkPointsB(0, $hand);
+        $sum_points = $rules->checkAcesB($sum_points);
+        
+        $this->assertEquals([10,10], $sum_points);
     }
 }

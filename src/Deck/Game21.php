@@ -12,16 +12,36 @@ class Game21
 	{
 		$winner = "bank";
 
-        if ($points_player == 21 && $points_bank != 21) {
-			$winner = "player";
+		if ($points_bank == 21) {
+			$winner = "bank";
+            return $winner;
         }
-        elseif ($points_bank > 21 && $points_player < 21) {
+        if ($points_player == 21) {
 			$winner = "player";
+            return $winner;
         }
-        elseif ($points_bank < 21 && $points_player < 21 && $points_bank < $points_player) {
+        if ($points_bank == $points_player) {
+            $winner = "bank";
+            return $winner;
+        }
+        if ($points_player > 21 && $points_bank < 21) {
+			$winner = "bank";
+            return $winner;
+        }
+        if ($points_bank < 21 && $points_player < 21 && $points_bank > $points_player) {
+			$winner = "bank";
+            return $winner;
+        }
+        if ($points_bank > 21 && $points_player < 21) {
 			$winner = "player";
+            return $winner;
         }
-		return $winner;
+        if ($points_bank < 21 && $points_player < 21 && $points_bank < $points_player) {
+			$winner = "player";
+            return $winner;
+        }
+        
+		// return $winner;
 	}
 
 	/**
@@ -71,6 +91,36 @@ class Game21
             }
             $num = (int)$temp;
             array_push($sum_points, $num);
+        }
+		return $sum_points;
+	}
+
+	public static function checkPointsB($points_found, $calc_points)
+	{
+		$sum_points = [];
+		$lenOfPoints = count($calc_points);
+
+		for ($i = 0; $i < $lenOfPoints; $i++) {
+            $temp = strtok($calc_points[$i], ' ');
+            if ($temp == 'A') {
+                $temp = 11;
+                if ($points_found < 8) {
+                    $temp = 11;
+                }
+            }
+            if ($temp == 'K' || $temp == 'Q' || $temp == 'J') {
+                $temp = 10;
+            }
+            $num = (int)$temp;
+            array_push($sum_points, $num);
+        }
+		return $sum_points;
+	}
+
+    public static function checkAcesB($sum_points)
+	{
+		if (count($sum_points) == 2 && array_sum($sum_points) == 22) {
+            $sum_points = [11, 1];
         }
 		return $sum_points;
 	}

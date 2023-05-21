@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block body %}
+    <h1>Blackjack</h1>
+
+    <h3>Placera era bets! 1 - 100 kr!</h3>
+
+    
+
+    {# <form>
+        <input type="button" onclick="location.href='{{ path('blackjack_shuffle') }}';" value="Nytt spel!" />
+    </form> #}
+
+    <form method="post" action="{{ path('blackjack_shuffle') }}">
+    <label>Spelare 1:</label>
+    <input type="number" id="bets1" name="bets1" min="1" max="100" value="1"><label> kr</label><br><br>
+    {% if num_players >= 2 %}
+        <label>Spelare 2:</label>
+        <input type="number" id="bets2" name="bets2" min="1" max="100" value="1"><label> kr</label><br><br>
+    {% endif %}
+    {% if num_players == 3 %}
+        <label>Spelare 3:</label>
+        <input type="number" id="bets3" name="bets3" min="1" max="100" value="1"><label> kr</label><br><br>
+    {% endif %}
+    <input name="bets" type="submit" value="Starta spelet!">
+</form>
+    <br><br>
+    
+    
+{% endblock %}

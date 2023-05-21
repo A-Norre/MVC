@@ -1,0 +1,88 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block body %}
+    <h1>Blackjack</h1>
+
+    <h3>Spelet har startat!</h3>
+    <b>Spelare 1:</b><br>
+    {% for card in player1 %}
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
+    {% endfor %}
+    <b>Poäng</b>
+    <b>{{ sum_points1 }}</b><br><br>
+
+    <form>
+        {% if sum_points1 < 21 and playerstop1 == false %}
+            <input type="button" onclick="location.href='{{ path('blackjack_draw', {playernum: 1}) }}';" value="Ett kort till!" />
+            <input type="button" onclick="location.href='{{ path('blackjack_stop', {stop: 1}) }}';" value="Stanna!" />
+        {% else %}
+            {# <input type="button" onclick="location.href='{{ path('blackjack_stop') }}';" value="Ta reda på resultat!" /> #}
+        {% endif %}
+    </form>
+
+    {% if num_players >= 2 %}
+        <b>Spelare 2:</b><br>
+        {% for card in player2 %}
+            {% if '♥' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% elseif '♦' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% else %}
+                <b>{{ card }}</b><br>
+            {% endif %}
+        {% endfor %}
+        <b>Poäng</b>
+        <b>{{ sum_points2 }}</b><br><br>
+
+    <form>
+        {% if sum_points2 < 21 and playerstop2 == false %}
+            <input type="button" onclick="location.href='{{ path('blackjack_draw', {playernum: 2}) }}';" value="Ett kort till!" />
+            <input type="button" onclick="location.href='{{ path('blackjack_stop', {stop: 2}) }}';" value="Stanna!" />
+        {% else %}
+            {# <input type="button" onclick="location.href='{{ path('blackjack_stop') }}';" value="Ta reda på resultat!" /> #}
+        {% endif %}
+    </form>
+    {% endif %}
+
+    
+
+    {% if num_players == 3 %}
+        <b>Spelare 3:</b><br>
+        {% for card in player3 %}
+            {% if '♥' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% elseif '♦' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% else %}
+                <b>{{ card }}</b><br>
+            {% endif %}
+        {% endfor %}
+        <b>Poäng</b>
+        <b>{{ sum_points3 }}</b><br><br>
+        <form>
+        {% if sum_points3 < 21 and playerstop3 == false %}
+            <input type="button" onclick="location.href='{{ path('blackjack_draw', {playernum: 3}) }}';" value="Ett kort till!" />
+            <input type="button" onclick="location.href='{{ path('blackjack_stop', {stop: 3}) }}';" value="Stanna!" />
+        {% else %}
+            {# <input type="button" onclick="location.href='{{ path('blackjack_stop') }}';" value="Ta reda på resultat!" /> #}
+        {% endif %}
+        </form>
+    {% endif %}
+    
+    
+    <br>
+    <br>
+
+    {# <b>{{ num_cards }}</b><br> #}
+    
+    
+    
+{% endblock %}

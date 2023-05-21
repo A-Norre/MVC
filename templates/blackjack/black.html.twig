@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block body %}
+    <h1>Blackjack</h1>
+
+    {# <form>
+        <input type="button" onclick="location.href='{{ path('blackjack_shuffle') }}';" value="Starta spelet!" />
+    </form> #}
+
+    <h3>Hur många spelare?<h3>
+    <a href="{{ path('blackjack_bets', {num: 1}) }}">1 Spelare</a><br>
+    <a href="{{ path('blackjack_bets', {num: 2}) }}">2 Spelare</a><br>
+    <a href="{{ path('blackjack_bets', {num: 3}) }}">3 Spelare</a><br>
+
+    <a href="{{ path('blackjack_api') }}">API</a><br>
+ 
+    <h3>Regler:</h3>
+    <p>
+        Spelet går ut på att komma så nära talet 21 som möjligt utan att bli "tjock", det vill säga få över 21. Man måste dessutom ha bättre kort än dealern. Alla klädda kort är värda 10, ess är 11 eller 1. Om spelarens 2 första kort är ett ess och ett klätt kort/en 10:a kallas det Black Jack och ger en och en halv gånger insatsen, såvida inte dealern också får Black Jack. Får spelaren Black Jack, och dealern har ess som första kort kan spelaren välja att ta "jämna pengar", det vill säga få vinst lika stor som insatsen.
+    </p>
+    <p>
+        Om både spelare och dealer har 17, 18 eller 19 så vinner dealern, har både spelare och dealer 20 eller 21 så blir det lika, dvs ingen vinst till spelaren men han blir heller inte av med sin insats. Hos kasinon generellt, exempelvis Casino Cosmopol i Sverige, gäller dock att 17, 18, 19, 20 eller 21 innebär "push", det vill säga att man behåller sin insats. Denna regel har ganska stor betydelse för bankens statistiska övertag, ett par procent.
+    </p>
+    <p>
+        Spelaren satsar valfritt belopp (maximum är 1/600 del av prisbasbeloppet och minimum är vanligtvis 20 kr) i sin spelruta före en giv. Det brukar finnas gränser både uppåt och nedåt. Dealern ger först ut två öppna kort till varje spelare. Till sig själv delar dealern ut ett kort.
+    </p>
+    <p>
+        Spelarna får nu välja om de vill ha fler kort eller stanna. När spelarna valt klart drar dealern kort. Dealern måste stanna på 17 eller bättre och ta kort om det är under 17. Dealen måste stanna även om denna har exempelvis ess och 6:a dvs 7/17.
+    </p>
+    
+    
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block body %}
+    <h1>Blackjack</h1>
+
+    {# <h3>bets</h3>
+    {% if playerwon1 == true %}
+        {{ bets1 }}
+    {% endif %}
+
+    {% if playerwon2 == true %}
+        {{ bets2 }}
+    {% endif %}
+
+    {% if playerwon3 == true %}
+        {{ bets3 }}
+    {% endif %} #}
+    {# {{ bets1 }}<br>{{ bets2 }}<br>{{ bets3 }} #}
+
+    <h3>Sammanställning</h3>
+    <b>Bank:
+    {{ bank }} Poäng</b><br>
+    {% for card in bank_cards %}
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
+    {% endfor %}<br>
+
+    <b>Spelare 1:
+    {{ player1 }} Poäng</b><br>
+    {% if playerwon1 == true %}
+        <b style="color: green">Spelare 1 vann: {{ bets1 }} kr</b><br>
+    {% else %}
+        <b>Bankiren vann med {{ bank }} poäng!</b><br>
+        <b style="color: red">Spelare 1 förlorade: {{ bets1 }} kr</b><br>
+    {% endif %}
+    {# {% if bank == 21 %}
+            <b>Bankiren vann med {{ bank }} poäng!</b><br>
+    {% elseif player1 == 21 %}
+            <b>Spelare 1 vann!</b><br>
+    {% elseif player1 > 21 and bank < 21 %}
+            <b>Bankiren vann med {{ bank }} poäng!</b><br>
+    {% elseif bank > 21 and player1 < 21 %}
+            <b>Spelare 1 vann!</b><br>
+    {% elseif bank < 21 and player1 < 21 and bank < player1 %}
+            <b>Spelare 1 vann!</b><br>
+    {% else %}
+            <b>Bankiren vann med {{ bank }} poäng!</b><br>
+    {% endif %} #}
+
+    {% for card in player_cards1 %}
+        {% if '♥' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% elseif '♦' in card %}
+            <b style="color: red">{{ card }}</b><br>
+        {% else %}
+            <b>{{ card }}</b><br>
+        {% endif %}
+    {% endfor %}
+    <br>
+
+    
+
+    {% if num_players >= 2 %}
+        <b>Spelare 2:
+        {{ player2 }} Poäng</b><br>
+        {% if playerwon2 == true %}
+            <b style="color: green">Spelare 2 vann: {{ bets2 }} kr</b><br>
+        {% else %}
+            <b>Bankiren vann med {{ bank }} poäng!</b><br>
+            <b style="color: red">Spelare 2 förlorade: {{ bets2 }} kr</b><br>
+        {% endif %}
+        {# {% if bank == 21 %}
+                <b>Bankiren vann med {{ bank }} poäng!</b><br>
+        {% elseif player2 == 21 %}
+                <b>Spelare 2 vann!</b><br>
+        {% elseif player2 > 21 and bank < 21 %}
+                <b>Bankiren vann med {{ bank }} poäng!</b><br>
+        {% elseif bank > 21 and player2 < 21 %}
+                <b>Spelare 2 vann!</b><br>
+        {% elseif bank < 21 and player2 < 21 and bank < player2 %}
+                <b>Spelare 2 vann!</b><br>
+        {% else %}
+                <b>Bankiren vann med {{ bank }} poäng!</b><br>
+        {% endif %} #}
+        {% for card in player_cards2 %}
+            {% if '♥' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% elseif '♦' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% else %}
+                <b>{{ card }}</b><br>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <br>
+
+
+    {% if num_players == 3 %}
+        <b>Spelare 3:
+        {{ player3 }} Poäng</b><br>
+        {% if playerwon3 == true %}
+            <b style="color: green">Spelare 3 vann: {{ bets3 }} kr</b><br>
+        {% else %}
+            <b>Bankiren vann med {{ bank }} poäng!</b><br>
+            <b style="color: red">Spelare 3 förlorade: {{ bets3 }} kr</b><br>
+        {% endif %}
+        {# {% if bank == 21 %}
+                <b>Bankiren vann med {{ bank }} poäng!</b><br>
+        {% elseif player3 == 21 %}
+                <b>Spelare 3 vann!</b><br>
+        {% elseif player3 > 21 and bank < 21 %}
+                <b>Bankiren vann med {{ bank }} poäng!</b><br>
+        {% elseif bank > 21 and player3 < 21 %}
+                <b>Spelare 3 vann!</b><br>
+        {% elseif bank < 21 and player3 < 21 and bank < player3 %}
+                <b>Spelare 3 vann!</b><br>
+        {% else %}
+                <b>Bankiren vann med {{ bank }} poäng!</b><br>
+        {% endif %} #}
+        {% for card in player_cards3 %}
+            {% if '♥' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% elseif '♦' in card %}
+                <b style="color: red">{{ card }}</b><br>
+            {% else %}
+                <b>{{ card }}</b><br>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <br>
+
+    <form>
+        <input type="button" onclick="location.href='{{ path('blackjack_game') }}';" value="Nytt spel!" />
+    </form>
+    <br><br>
+    
+    
+{% endblock %}
