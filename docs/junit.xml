@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="27" assertions="27" errors="0" warnings="0" failures="0" skipped="0" time="0.016771">
-    <testsuite name="Project Test Suite" tests="27" assertions="27" errors="0" warnings="0" failures="0" skipped="0" time="0.016771">
-      <testsuite name="App\Deck\DeckFuncTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckFuncTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.005987">
-        <testcase name="testRemove" class="App\Deck\DeckFuncTest" classname="App.Deck.DeckFuncTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckFuncTest.php" line="11" assertions="1" time="0.005629"/>
-        <testcase name="testRecreate" class="App\Deck\DeckFuncTest" classname="App.Deck.DeckFuncTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckFuncTest.php" line="18" assertions="1" time="0.000358"/>
+  <testsuite name="" tests="27" assertions="27" errors="0" warnings="0" failures="0" skipped="0" time="0.018099">
+    <testsuite name="Project Test Suite" tests="27" assertions="27" errors="0" warnings="0" failures="0" skipped="0" time="0.018099">
+      <testsuite name="App\Deck\DeckFuncTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckFuncTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.006533">
+        <testcase name="testRemove" class="App\Deck\DeckFuncTest" classname="App.Deck.DeckFuncTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckFuncTest.php" line="11" assertions="1" time="0.006172"/>
+        <testcase name="testRecreate" class="App\Deck\DeckFuncTest" classname="App.Deck.DeckFuncTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckFuncTest.php" line="18" assertions="1" time="0.000361"/>
       </testsuite>
-      <testsuite name="App\Deck\DeckStartTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckStartTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000746">
-        <testcase name="testCreateCards" class="App\Deck\DeckStartTest" classname="App.Deck.DeckStartTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckStartTest.php" line="11" assertions="1" time="0.000746"/>
+      <testsuite name="App\Deck\DeckStartTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckStartTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.000823">
+        <testcase name="testCreateCards" class="App\Deck\DeckStartTest" classname="App.Deck.DeckStartTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckStartTest.php" line="11" assertions="1" time="0.000823"/>
       </testsuite>
-      <testsuite name="App\Deck\DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.003948">
-        <testcase name="testCards" class="App\Deck\DeckTest" classname="App.Deck.DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" line="11" assertions="1" time="0.000248"/>
-        <testcase name="testShuffle" class="App\Deck\DeckTest" classname="App.Deck.DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" line="17" assertions="1" time="0.003439"/>
-        <testcase name="testDraw" class="App\Deck\DeckTest" classname="App.Deck.DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" line="25" assertions="1" time="0.000262"/>
+      <testsuite name="App\Deck\DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.004681">
+        <testcase name="testCards" class="App\Deck\DeckTest" classname="App.Deck.DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" line="11" assertions="1" time="0.000277"/>
+        <testcase name="testShuffle" class="App\Deck\DeckTest" classname="App.Deck.DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" line="17" assertions="1" time="0.004075"/>
+        <testcase name="testDraw" class="App\Deck\DeckTest" classname="App.Deck.DeckTest" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/DeckTest.php" line="25" assertions="1" time="0.000329"/>
       </testsuite>
-      <testsuite name="App\Deck\Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" tests="21" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.006090">
-        <testcase name="testTotalScore" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="11" assertions="1" time="0.000544"/>
-        <testcase name="testTotalScore2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="18" assertions="1" time="0.000307"/>
-        <testcase name="testTotalScore3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="25" assertions="1" time="0.000286"/>
-        <testcase name="testTotalScore4" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="32" assertions="1" time="0.000262"/>
-        <testcase name="testTotalScore5" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="39" assertions="1" time="0.000250"/>
-        <testcase name="testTotalScore6" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="46" assertions="1" time="0.000247"/>
-        <testcase name="testTotalScore7" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="53" assertions="1" time="0.000239"/>
-        <testcase name="testCheckPoints" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="60" assertions="1" time="0.000273"/>
-        <testcase name="testCheckPoints2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="74" assertions="1" time="0.000254"/>
-        <testcase name="testCheckAces" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="87" assertions="1" time="0.000280"/>
-        <testcase name="testCheckAces2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="100" assertions="1" time="0.000258"/>
-        <testcase name="testCheckAces3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="115" assertions="1" time="0.000263"/>
-        <testcase name="testCheckAcesB" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="130" assertions="1" time="0.000270"/>
-        <testcase name="testCheckpoints3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="143" assertions="1" time="0.000243"/>
-        <testcase name="testTotalScoreBlack" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="156" assertions="1" time="0.000253"/>
-        <testcase name="testTotalScoreBlack2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="163" assertions="1" time="0.000246"/>
-        <testcase name="testTotalScoreBlack3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="170" assertions="1" time="0.000228"/>
-        <testcase name="testTotalScoreBlack4" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="177" assertions="1" time="0.000477"/>
-        <testcase name="testTotalScoreBlack5" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="184" assertions="1" time="0.000321"/>
-        <testcase name="testTotalScoreBlack6" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="191" assertions="1" time="0.000298"/>
-        <testcase name="testTotalScoreBlack7" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="198" assertions="1" time="0.000290"/>
+      <testsuite name="App\Deck\Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" tests="21" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.006061">
+        <testcase name="testTotalScore" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="11" assertions="1" time="0.000579"/>
+        <testcase name="testTotalScore2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="18" assertions="1" time="0.000363"/>
+        <testcase name="testTotalScore3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="25" assertions="1" time="0.000251"/>
+        <testcase name="testTotalScore4" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="32" assertions="1" time="0.000248"/>
+        <testcase name="testTotalScore5" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="39" assertions="1" time="0.000269"/>
+        <testcase name="testTotalScore6" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="46" assertions="1" time="0.000248"/>
+        <testcase name="testTotalScore7" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="53" assertions="1" time="0.000246"/>
+        <testcase name="testCheckPoints" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="60" assertions="1" time="0.000321"/>
+        <testcase name="testCheckPoints2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="74" assertions="1" time="0.000268"/>
+        <testcase name="testCheckAces" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="87" assertions="1" time="0.000288"/>
+        <testcase name="testCheckAces2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="100" assertions="1" time="0.000317"/>
+        <testcase name="testCheckAces3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="115" assertions="1" time="0.000279"/>
+        <testcase name="testCheckAcesB" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="130" assertions="1" time="0.000310"/>
+        <testcase name="testCheckpoints3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="143" assertions="1" time="0.000287"/>
+        <testcase name="testTotalScoreBlack" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="156" assertions="1" time="0.000246"/>
+        <testcase name="testTotalScoreBlack2" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="163" assertions="1" time="0.000263"/>
+        <testcase name="testTotalScoreBlack3" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="170" assertions="1" time="0.000262"/>
+        <testcase name="testTotalScoreBlack4" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="177" assertions="1" time="0.000249"/>
+        <testcase name="testTotalScoreBlack5" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="184" assertions="1" time="0.000250"/>
+        <testcase name="testTotalScoreBlack6" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="191" assertions="1" time="0.000280"/>
+        <testcase name="testTotalScoreBlack7" class="App\Deck\Game21Test" classname="App.Deck.Game21Test" file="/home/alno17/dbwebb-kurser/mvc/me/report/tests/Deck/Game21Test.php" line="198" assertions="1" time="0.000237"/>
       </testsuite>
     </testsuite>
   </testsuite>

@@ -133,6 +133,8 @@ class Game21
 			$winner = "player";
             return $winner;
         }
+
+        return $winner;
 	}
 }
 
