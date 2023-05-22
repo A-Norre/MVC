@@ -152,4 +152,53 @@ class Game21Test extends \PHPUnit\Framework\TestCase {
         
         $this->assertEquals([10,10], $sum_points);
     }
+
+    public function testTotalScoreBlack() {
+        $deck = new Game21();
+        $decide_winner = $deck->totalScore(21, 20);
+        
+        $this->assertEquals('bank', $decide_winner);
+    }
+
+    public function testTotalScoreBlack2() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(20, 21);
+        
+        $this->assertEquals('player', $decide_winner);
+    }
+
+    public function testTotalScoreBlack3() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(20, 22);
+        
+        $this->assertEquals('bank', $decide_winner);
+    }
+
+    public function testTotalScoreBlack4() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(22, 20);
+        
+        $this->assertEquals('player', $decide_winner);
+    }
+
+    public function testTotalScoreBlack5() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(19, 20);
+        
+        $this->assertEquals('player', $decide_winner);
+    }
+
+    public function testTotalScoreBlack6() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(19, 19);
+        
+        $this->assertEquals('bank', $decide_winner);
+    }
+
+    public function testTotalScoreBlack7() {
+        $rules = new Game21();
+        $decide_winner = $rules->totalScore(19, 18);
+        
+        $this->assertEquals('bank', $decide_winner);
+    }
 }

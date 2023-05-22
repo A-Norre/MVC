@@ -247,7 +247,7 @@ class BlackjackController extends AbstractController
         
         $remaining_cards = $session->get("remaining_cards");
 
-        $drawn_bank = [];
+        // $drawn_bank = [];
         $player = "player" . $playernum;
 
         if ($session->get($player)) {
@@ -395,11 +395,12 @@ class BlackjackController extends AbstractController
         if ($find_winner == "player") {
             $winnings = $winningsRepository->find($session->get("turn"));
             $session->set("playerwon" . $session->get("turn"), true);
+            $profit = $session->get($bets) + $winnings->getProfit($session->get("turn"));
             if ($session->get($sum_points) == 21) {
                 $session->set($bets, $session->get($bets) * 1.5);
-                $winnings->setProfit($session->get($bets) + $winnings->getProfit($session->get("turn")));
+                $winnings->setProfit($profit);
             } else {
-                $winnings->setProfit($session->get($bets) + $winnings->getProfit($session->get("turn")));
+                $winnings->setProfit($profit);
             }
             $winningsRepository->save($winnings, true);
         }
@@ -460,16 +461,16 @@ class BlackjackController extends AbstractController
         $winnings->setProfit(0);
         $losses = $lossesRepository->find(2);
         $losses->setLoss(0);
-        $winningsRepository->save($winnings, true);
-        $lossesRepository->save($losses, true);
+        $winningsRepository->save(/** @scrutinizer ignore-type */ $winnings, true);
+        $lossesRepository->save(/** @scrutinizer ignore-type */ $losses, true);
 
         # Spelare 3
         $winnings = $winningsRepository->find(3);
         $winnings->setProfit(0);
         $losses = $lossesRepository->find(3);
         $losses->setLoss(0);
-        $winningsRepository->save($winnings, true);
-        $lossesRepository->save($losses, true);
+        $winningsRepository->save(/** @scrutinizer ignore-type */ $winnings, true);
+        $lossesRepository->save(/** @scrutinizer ignore-type */ $losses, true);
 
 
         return $this->redirectToRoute('blackjack_game');
