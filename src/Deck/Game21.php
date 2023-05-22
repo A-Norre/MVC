@@ -20,18 +20,6 @@ class Game21
 			$winner = "player";
             return $winner;
         }
-        if ($points_bank == $points_player) {
-            $winner = "bank";
-            return $winner;
-        }
-        if ($points_player > 21 && $points_bank < 21) {
-			$winner = "bank";
-            return $winner;
-        }
-        if ($points_bank < 21 && $points_player < 21 && $points_bank > $points_player) {
-			$winner = "bank";
-            return $winner;
-        }
         if ($points_bank > 21 && $points_player < 21) {
 			$winner = "player";
             return $winner;
@@ -41,7 +29,7 @@ class Game21
             return $winner;
         }
         
-		// return $winner;
+		return $winner;
 	}
 
 	/**
@@ -123,6 +111,40 @@ class Game21
             $sum_points = [11, 1];
         }
 		return $sum_points;
+	}
+
+    public static function totalScoreBlack($points_bank, $points_player)
+	{
+		$winner = "bank";
+
+		if ($points_bank == 21) {
+			$winner = "bank";
+            return $winner;
+        }
+        if ($points_player == 21) {
+			$winner = "player";
+            return $winner;
+        }
+        if ($points_bank == $points_player) {
+            $winner = "bank";
+            return $winner;
+        }
+        if ($points_player > 21 && $points_bank < 21) {
+			$winner = "bank";
+            return $winner;
+        }
+        if ($points_bank < 21 && $points_player < 21 && $points_bank > $points_player) {
+			$winner = "bank";
+            return $winner;
+        }
+        if ($points_bank > 21 && $points_player < 21) {
+			$winner = "player";
+            return $winner;
+        }
+        if ($points_bank < 21 && $points_player < 21 && $points_bank < $points_player) {
+			$winner = "player";
+            return $winner;
+        }
 	}
 }
 
