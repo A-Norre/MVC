@@ -452,8 +452,8 @@ class BlackjackController extends AbstractController
         $winnings->setProfit(0);
         $losses = $lossesRepository->find(1);
         $losses->setLoss(0);
-        $winningsRepository->save($winnings, true);
-        $lossesRepository->save($losses, true);
+        $winningsRepository->save(/** @scrutinizer ignore-type */ $winnings, true);
+        $lossesRepository->save(/** @scrutinizer ignore-type */ $losses, true);
 
         # Spelare 2
         $winnings = $winningsRepository->find(2);
