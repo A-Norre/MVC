@@ -14,6 +14,7 @@
                 <a href="#kmom04">Kmom04</a><br>
                 <a href="#kmom05">Kmom05</a><br>
                 <a href="#kmom06">Kmom06</a><br>
+                <a href="#kmom10">Kmom10</a><br>
                 
             <section>
                 <br>
@@ -213,6 +214,42 @@
                     Vilken är din TIL för detta kmom?
                 </b><br><br>
                     Detta kursmomentet har jag lärt mig att det lönar sig att försöka hålla sin kod så smidig som möjligt från början och inte dra iväg med några extrema lösningar då det inte är motiverat. När man kör verktyg som t.ex. phpmetrics eller scrutinizer är det därför enklare att justera sin kod och samtidigt uppnå ett högre kvalitetsbetyg/lägre komplexitets-betyg, än om man hade satsat på väldigt komplicerade lösningar bara för saks skull. 
+                </p><br>
+            </section>
+
+            <section>
+                <br>
+                <h2><a name="kmom10">Kmom10</a></h2><br>
+                <p><b>För varje krav du implementerat, dvs 1-3, 4, 5, 6, skriver du ett textstycke om ca 5-10 meningar där du beskriver hur du löste kravet. Poängsättningen tar sin start i din text så se till att skriva väl för att undvika poängavdrag. Missar du att skriva/dokumentera din lösning så blir det 0 poäng. Du kan inte komplettera en inlämning för att få högre betyg.
+                </b><br><br><b>1,2,3:</b><br>
+                Jag har skapat ett Blackjack-spel som min projektdel. Uppgiften gick ut på att spelet skulle klara av 1-3 spelare. För att lösa detta har jag valt att arbeta med return/redirects. För att undvika onödigt mycket kod återanvänder jag istället samma route för samtliga spelare (oberoende på hur många spelare som är aktiva). För att lösa detta har jag skrivit koden så dynamisk som möjligt så att samma routrar kan återanvändas till samtliga spelare. Jag har även använt mig av session-variablerför att hålla koll på hur många aktiva spelare det är. Genom detta kan programmet även hålla koll på turerna för samtliga spelare ska kunna bearbetas för att t.ex. komma fram till ett resultat. Programmet fungerar därför på så sätt att vilken spelare som helst kan välja att dra ett nytt kort eller stanna närsomhelst. Detta påverkar inte spelet utan spelet fungerar oavsett vilken spelare som agerar. Detta är löst genom att hålla koll på vilken spelare det är som trycker på en av sina knappar. Samtidigt har jag även jobbat med att hålla hög kodkvalitet och dessutom hålla nere komplexiteten så mycket som det går för att i och med detta nå upp till ett högre Scrutinizer-betyg. Jag har även lagt till en möjlighet för spelarna att satsa pengar för att spelet ska vara mer verklighetsanpassat. Detta görs genom sessionsvariabler där värdet postas och sparas, för att sedan efter poängräkning plockas fram igen och redogöra hur mycket respektive spelare har vunnit/förlorat. 
+                </p>
+                
+                <p>
+                    <b>4:</b><br>
+                    Jag har valt att göra 5 olika API routes. Den första hämtar data från databasen och redovisar hur mycket varje spelare hur många kronor respektive spelare har vunnit totalt under tiden som den har spelat. Den andra API route hämtar och redovisar hur mycket varje spelare har förlorat totalt under tiden som den spelat. Sedan har jag även gjort en route där man kan testa att spela Blackjack mot sig själv. Genom att trycka på länken så körs en route som drar kort åt spelaren för att se om spelaren får Blackjack (dvs 21 poäng). Detta redovisas sedan med hjälp av API:et. Tanken med detta var att spelaren skulle kunna testspela och se hur det kan se ut/fungera när man spelar Blackjack. Jag har även gjort en route där man kan posta ett värde för att därefter få fram ut mycket pengar en specifik spelare har vunnit under tiden som den spelat. Jag har även gjort en annan route där man kan posta ett värde som representerar en spelare för att se hur mycket just den spelaren har förlorat i kronor.
+                </p>
+
+                <p>
+                <b>5:</b><br>
+                Jag har löst mitt program genom att skapa två olika tabeller. Den en tabellen håller koll på hur mycket pengar spelarna har vunnit totalt vardera. Den andra håller koll på hur mycket pengar spelar förlorat totalt vardera. För att skapa/lösa dessa tabellerna har jag använt mig av SQLite. Dessa tabeller uppdateras varje gång en spelare antingen vinner/förlorar mot banken. 
+                Det finns även en route som man kan klicka på/använda för att databasen ska återställas till noll. Då sätts alla vunna pengar, respektiva förlorade pengar till noll.
+                </p>
+
+                <p>
+                <b>6:</b><br>
+                För att lösa detta kravet valde jag att utöka mitt program med bland annat möjligheten för spelarna att kunna satsa pengar mot banken. Skulle spelarna få Blackjack (dvs 21 poäng) så vinner de 1,5 gånger sin insatts. Jag har även jobbat med att hålla hög kodkvalitet och låta programmet vara så dynamiskt/flexibelt samt enkelt att justera i som möjligt. Detta för att uppnå ett högt Scrutinizer-betyg. En ytterliggare anledning till varför jag har hållt programmet så dynamiskt och justerbart är att programmet är skrivet på ett sådant sätt att det hade utan större justeringar gått att spela fler spelare än 3 om man så hade velat. Jag har även skrivet tester för att täcka samtliga funktioner som används i programmet. Detta innebär att programmet är driftsäkert och chansen till buggar är små i och med att jag lyckades uppnå en kodtäckning på 100%.
+                </p>
+
+                <p><b>
+                Skriv ett allmänt stycke om hur projektet gick att genomföra. Problem/lösningar/strul/enkelt/svårt/snabbt/lång tid, etc. Var projektet lätt eller svårt? Tog det lång tid? Vad var svårt och vad gick lätt? Var det ett bra och rimligt projekt för denna kursen?
+                </b><br><br>
+                Jag tycker att det har varit ett bra projekt där man har fått möjlighet att visa vad man har lärt sig under tidigare veckor. Att koda innebär att strul och problem, vissa saker kan ta väldigt lång tid ibland innan man kommer på en lösningen men i sin helhet var det väl anpassat tidsmässigt. Dock så är det värt att påpeka att det är en väldigt massa smådelar i projektet, det är många små routrar som ska med, små texter osv så det blir ett enormt pussel att hålla reda på alla delar och försöka få med allt utan att glömma något. Det är dessutom väldigt mycket skrivande, många små texter men även en hel del stora (denna inkluderad) vilket kan tyckas lite synd. Jag hade hellre sett 6 raka kodningsuppgifter där man fick möjlighet att visa sina kunskaper och att denna texten skulle täckt allt skrivande. I sin helhet var det ett rimligt projekt för kursen och det var bra att man fick bygga vidare på det man redan hade påbörjat. 
+                </p><br>
+        
+                <p><b>Avsluta med ett sista stycke med dina tankar om kursen och vad du anser om materialet och handledningen (ca 5-10 meningar). Ge feedback till lärarna och förslå eventuella förbättringsförslag till kommande kurstillfällen. Är du nöjd/missnöjd? Kommer du att rekommendera kursen till dina vänner/kollegor? På en skala 1-10, vilket betyg ger du kursen?
+                </b><br><br>
+                Jag tycker att det har varit en bra kurs. Det jag uppskattar mest med kursen är att den har tillåtit eleven att tänka själv och gå sin egen väg av själva lösandet av de olika kursmomenten. Det har alltid funnits tydliga uppgifter som man ska lösa varje vecka, men vägen dit och hur man implementerar den har varit väldigt fritt vilket jag uppskattar mycket. Dock så tycker jag att det var lite synd att vi använde SQLite som databas även om det var tillåtet att använda andra så hade det krävts ett stort extra-arbete. Jag tycker att vi inte fick riktigt möjlighet att visa/använda de kunskaper vi samlat på oss i föregående databas-kurs. Jag tycker att kurser som dessa får en att känna känslan av att stå på sina egna ben, och det bidrar även mycket till utvecklingen som programmerare att man får lösa problemen på sitt egna sätt. Kursen har givit möjlighet till att träna och utveckla sin kreativa förmåga vilket är vädligt nyttigt som programmerare. Jag skulle därför gärna rekommendera kursen till andra som vill utveckla sina programmeringsfärdigheter och vill därför ge kursen en stark 9:a i betyg.
                 </p><br>
             </section>
         </article>

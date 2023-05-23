@@ -24,7 +24,7 @@ use App\Deck\Game21;
 
 class BlackjackapiController extends AbstractController
 {
-    #[Route('/blackjack/api', name: "blackjack_api")]
+    #[Route('/proj/api', name: "project_api")]
     public function apiBlackJack(
         WinningsRepository $winningsRepository,
     ): Response

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body style="background-color: #c7ffc7">
+        <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
+            <span class="site-title">My Symfony Site</span>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="{{ path('presentation') }}">Hem</a></li>
+                <li><a href="{{ path('report') }}">Report</a></li>
+                <li><a href="{{ path('project_about') }}">About</a><br></li>
+                <li><a href="{{ path('blackjack_game') }}">Blackjack</a><br></li>
+                <li><a href="{{ path('project_api') }}">API</a><br></li>
+                <li><a href="{{ path('blackjack_database_reset') }}">Reset database</a><br></li>
+                <li><a href="{{ path('project_req6') }}">Krav 6</a><br></li>
+            </ul>
+        </nav>
+        <main>{% block body %}{% endblock %}</main>
+
+        <footer>{% block footer %}{% endblock %}</footer>
+    </body>
+</html>

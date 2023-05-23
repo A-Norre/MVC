@@ -1,0 +1,28 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block body %}
+    <h2>Krav 6</h2>
+
+    <h4>Högt Scrutinizer-betyg</h4>
+    <p>Mitt program når upp till 9,75 i Scrutinizer-betyg vilket är en indikation på hög kvalitet på koden. Då 10.0 är maxpoäng så når programmet upp till 9,75 där de flesta betyg är A alternativt B i vissa fall. Att nå upp till ett så pass högt Scrutinizer betyg är tidskrävande då det innebär att man måste skriva kod som uppfyller samtliga kriterier i Scrutinizer-testet. Samtidigt som att programmet fortsatt ska utföra sin uppgift utan kompromisser. Då samtliga projektdelar är utförda, och programmet fungerar som det ska så är detta i sig en tydlig motivering till att programmet är välskrivet i sin helhet.</p>
+
+    <br>
+    <h4>Extra del (satsa pengar)</h4>
+    <p>Utöver de baskrav som fanns gällande Blackjack, där det ska gå att spela flera olika händer samtidigt mot banken. Så går det i detta programmet dessutom att "satsa pengar", vilket är en extra del jag valde att utöka programmet med då detta gör programmet mer verklighetsanpassat. Dessutom är det så att spelet håller koll på insatsen och skulle någon av spelarna som vinner få Blackjack (dvs 21 poäng) vinner man 1,5 gånger pengarna. Utöver att varje spelare kan satsa pengar varje gång så hålls dessutom räkningen på hur mycket pengar respektive spelare har vunnit/förlorat. Detta sker med hjälp av en databas. Andelen vunna/förlorade pengar sparas i databasen efter varje omgång för respektive spelare. Detta var en tidskrävande del som gick bortom kraven, men som bidrar till spelets helheten samt att spelarna kan hålla koll på om de har tjänat pengar eller förlorat pengar genom att spela spelet.</p>
+
+    <br>
+    <h4>Dynamiskt skrivet</h4>
+    <p>Koden är skriven på ett sådant sätt att det egentligen skulle gå att spela X antal spelare. Nu var uppgiften att 3 personer skulle kunna spela. Skulle man däremot vilja öka antalet spelare av någon anledning är det väldigt enkelt justerat då koden är dynamiskt skriven och använder sig av returns/redirects tills dess att alla spelarna ha körts igenom. Det även skrivet på detta sätt för att undvika onödigt mycket kod i routrarna. Istället för att ha for-loopar i routrarna som går igenom samtliga spelarna så återanvänds koden i routen genom return/redirects, på så sätt sparas mycket och det koden mer flexibel skulle man vilja justera något vilket även Scrutinizer betyget är ett tecken på. En enklare lösning hade varit om man t.ex. gjorde en route for 1 spelare, en annan route för 2 spelare osv, detta är dock inte lika dynamiskt skriven kod och inte heller lika tankemässigt utmanande som den koden som finns med i det här programmet.</p>
+
+    <br>
+    <h4>Testning/Kodtäckning</h4>
+    <p>Av de funktioner som används i programmet så är den gemensamma kodtäckningen 100%. Detta innebär att samtliga funktioner som används i programmet har alla delar testats vilket i sin tur innebär en hög säkerhet att programmet fungerar som det ska i alla tänkbara situationer. Det var inget krav att nå upp till 100% men då det är bra som programmerare att veta att sin kod är säker att sätta i drift och att man inte bör förvänta sig några buggar eller problem var därför 100% kodtäckning ett extra högt mål värt att uppnå.</p>
+
+    
+
+
+    
+    
+{% endblock %}

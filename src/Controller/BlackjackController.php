@@ -24,6 +24,24 @@ use App\Deck\Game21;
 
 class BlackjackController extends AbstractController
 {
+    #[Route('/proj/about', name: "project_about")]
+    public function projectBlackJackAbout(): Response
+    {
+        return $this->render('blackjack/project_about.html.twig');
+    }
+
+    #[Route('/proj/about/database', name: "project_about_database")]
+    public function projectBlackJackAboutDatabase(): Response
+    {
+        return $this->render('blackjack/project_about_database.html.twig');
+    }
+
+    #[Route('/proj/req6', name: "project_req6")]
+    public function projectBlackJackReq6(): Response
+    {
+        return $this->render('blackjack/project_req6.html.twig');
+    }
+
     #[Route('/blackjack/game', name: "blackjack_game")]
     public function gameBlackJack(): Response
     {
@@ -91,10 +109,6 @@ class BlackjackController extends AbstractController
         $drawn_player = [];
         $remaining_cards = $session->get("remaining_cards");
 
-        // if ($session->get("drawn_players")) {
-        //     $drawn_player = $session->get("drawn_players");
-        //     $drawn_player = array_values($drawn_player);
-        // }
 
         $deck = new Deck();
         $rules = new Game21();
@@ -113,22 +127,10 @@ class BlackjackController extends AbstractController
 
         $remaining_cards = array_values($remaining_cards);
 
-        // if ($session->get("first_round") == true) {
-        //     $player_card = $deck->draw($remaining_cards);
-        //     $remaining_cards = $deck->remove($deck->recreate($remaining_cards), $deck->draw($remaining_cards));
-        //     array_push($drawn_player, $player_card);
-
-        //     $remaining_cards = array_values($remaining_cards);
-
-        //     $session->set("first_round", false);
-        // }
 
         $calc_points = $drawn_player;
         $points_found = 0;
 
-        // if ($session->get("sum_points")) {
-        //     $points_found = $session->get("sum_points");
-        // }
 
         $sum_points = $rules->checkPointsB($points_found, $calc_points);
 
@@ -155,7 +157,6 @@ class BlackjackController extends AbstractController
         }
 
 
-        // $amount_of_players = "player" . $session->get("num_players");
 
         if ($session->get("playerstop1") == true && $session->get("playerstop2") == true && $session->get("playerstop3") == true) {
             return $this->redirectToRoute('blackjack_bank');
@@ -343,40 +344,6 @@ class BlackjackController extends AbstractController
         LossesRepository $lossesRepository,
     ): Response
     {
-        // $points_player = $session->get("sum_points");
-        // $points_bank = $session->get("sum_points_bank");
-        // $drawn_player = $session->get("drawn_players");
-        // $drawn_bank = $session->get("drawn_bank");
-        // $score_player = 0;
-        // $score_bank = 0;
-
-        // if ($session->get("score_player")) {
-        //     $score_player = $session->get("score_player");
-        // }
-        // if ($session->get("score_bank")) {
-        //     $score_bank = $session->get("score_bank");
-        // }
-
-        // $winner = new Game21();
-        // $find_winner = $winner->totalScore($points_bank, $points_player);
-
-
-
-        // if ($find_winner === "player") {
-        //     $score_player = (int)$score_player + 1;
-        //     $session->set("score_player", $score_player);
-        // }
-        // if ($find_winner === "bank") {
-        //     $score_bank = (int)$score_bank + 1;
-        //     $session->set("score_bank", $score_bank);
-        // }
-
-        // $data = [
-        //     "player" => $points_player,
-        //     "player_cards" => $drawn_player,
-        //     "bank" => array_sum($points_bank),
-        //     "bank_cards" => $drawn_bank,
-        // ];
         $player = "player" . $session->get("turn");
         $bets = "bets" . $session->get("turn");
         $sum_points = "sum_points" . $session->get("turn");
@@ -473,134 +440,9 @@ class BlackjackController extends AbstractController
         $lossesRepository->save(/** @scrutinizer ignore-type */ $losses, true);
 
 
-        return $this->redirectToRoute('blackjack_game');
+        return $this->redirectToRoute('project_about');
     }
 
-    // #[Route('/blackjack/api', name: "blackjack_api")]
-    // public function apiBlackJack(
-    //     WinningsRepository $winningsRepository,
-    // ): Response
-    // {
-    //     session_start();
-    //     session_destroy();
-
-    //     return $this->render('blackjack/black_api.html.twig');
-    // }
-
-    // #[Route('/blackjack/api/winnings', name: "blackjack_api_winnings")]
-    // public function apiBlackJackWinnings(
-    //     WinningsRepository $winningsRepository,
-    // ): Response {
-    //     $winnings = $winningsRepository->findAll();
-
-    //     // return $this->json($winnings);
-    //     $response = $this->json($winnings);
-    //     $response->setEncodingOptions(
-    //         $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    //     );
-    //     return $response;
-    // }
-
-    // #[Route('/blackjack/api/losses', name: "blackjack_api_losses")]
-    // public function apiBlackJackLosses(
-    //     LossesRepository $lossesRepository,
-    // ): Response {
-    //     $losses = $lossesRepository->findAll();
-
-    //     // return $this->json($losses);
-    //     $response = $this->json($losses);
-    //     $response->setEncodingOptions(
-    //         $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    //     );
-    //     return $response;
-    // }
-
-    // #[Route('/blackjack/api/statswinnings', name: "blackjack_api_stats_winnings")]
-    // public function apiBlackJackStatsWinnings(
-    //     WinningsRepository $winningsRepository,
-    // ): Response {
-    //     $id = $_POST["id"];
-    //     $winnings = $winningsRepository->find($id);
-
-    //     // return $this->json($winnings);
-    //     $response = $this->json($winnings);
-    //     $response->setEncodingOptions(
-    //         $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    //     );
-    //     return $response;
-    // }
-
-    // #[Route('/blackjack/api/statsloss', name: "blackjack_api_stats_loss")]
-    // public function apiBlackJackStatsLoss(
-    //     LossesRepository $lossesRepository,
-    // ): Response {
-    //     $id = $_POST["id"];
-    //     $losses = $lossesRepository->find($id);
-
-    //     // return $this->json($losses);
-    //     $response = $this->json($losses);
-    //     $response->setEncodingOptions(
-    //         $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    //     );
-    //     return $response;
-    // }
-
-    // #[Route('/blackjack/api/self', name: "blackjack_api_self")]
-    // public function apiBlackJackSelf(
-    //     SessionInterface $session,
-    //     LossesRepository $lossesRepository,
-    // ): Response {
-
-    //     $deck = new Deck();
-    //     $rules = new Game21();
-    //     $drawn_player = [];
-    //     $points_found = 0;
-    //     $shuffled_deck = $deck->shuffle($deck->cards());
-
-    //     $player_card = $deck->draw($shuffled_deck);
-    //     $shuffled_deck = $deck->remove($deck->recreate($shuffled_deck), $deck->draw($shuffled_deck));
-    //     array_push($drawn_player, $player_card);
-
-    //     $shuffled_deck = array_values($shuffled_deck);
-
-    //     $sum_points_player = $rules->checkPointsB($points_found, $drawn_player);
-
-    //     if ($session->get("store_points")) {
-    //         // $session->set("stack", array_push($session->get("stack"), $player_card));
-    //         $stack = $session->get("stack");
-    //         array_push($stack, $drawn_player);
-    //         $session->set("stack", $stack);
-    //         $session->set("store_points", array_sum($sum_points_player) + $session->get("store_points"));
-    //     } else {
-    //         $session->set("store_points", array_sum($sum_points_player));
-    //         $session->set("stack", $drawn_player);
-    //     }
-
-
-    //     if ($session->get("store_points") < 17) {
-    //         return $this->redirectToRoute('blackjack_api_self');
-    //     }
-
-    //     $blackjack = "Du fick inte Blackjack! Försök igen!";
-
-    //     if ($session->get("store_points") == 21) {
-    //         $blackjack = "Blackjack! Grattis du vann!";
-    //     }
-
-
-    //     $data = [
-    //         "Dragna kort: " =>  $session->get("stack"),
-    //         "Poäng: " => $session->get("store_points"),
-    //         "Resultat: " => $blackjack,
-    //     ];
-        
-
-    //     $response = new JsonResponse($data);
-    //     $response->setEncodingOptions(
-    //         $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-    //     );
-    //     return $response;
-    // }
 }
 
 

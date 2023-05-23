@@ -83,6 +83,11 @@ class Game21
 		return $sum_points;
 	}
 
+
+    /**
+	 * checks values in hand and calculates total points
+	 * 
+	 */
 	public static function checkPointsB($points_found, $calc_points)
 	{
 		$sum_points = [];
@@ -105,6 +110,10 @@ class Game21
 		return $sum_points;
 	}
 
+    /**
+	 * Checks if the hand only consists of Aces, and if so recalculates the points
+	 * 
+	 */
     public static function checkAcesB($sum_points)
 	{
 		if (count($sum_points) == 2 && array_sum($sum_points) == 22) {
@@ -113,6 +122,10 @@ class Game21
 		return $sum_points;
 	}
 
+    /**
+	 * Compares the total score for bank and player and calculates who the winner is
+	 * 
+	 */
     public static function totalScoreBlack($points_bank, $points_player)
 	{
 		$winner = "bank";

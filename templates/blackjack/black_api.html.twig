@@ -1,11 +1,11 @@
-{% extends "base.html.twig" %}
+{% extends "base2.html.twig" %}
 
 {% block title %}Blackjack{% endblock %}
 
 {% block body %}
-    <h1>API</h1>
-    <a href="{{ path('blackjack_api_winnings') }}">Winnings</a><br>
-    <a href="{{ path('blackjack_api_losses') }}">Losses</a><br>
+    <h2>API</h2>
+    <a href="{{ path('blackjack_api_winnings') }}">Vunna pengar</a><br>
+    <a href="{{ path('blackjack_api_losses') }}">Förlorade pengar</a><br>
     <a href="{{ path('blackjack_api_self') }}">Testa blackjack mot dig själv</a><br>
 
 

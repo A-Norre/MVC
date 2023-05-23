@@ -1,0 +1,46 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block body %}
+    <h2>Database</h2>
+
+    <img src="{{ asset('img/er-diagram.png') }}" height="150px" width="450px" alt="">
+    <p>
+        I tabell "Winnings" sparas summan vunna pengar per spelare.<br>
+        I tabell "Losses" sparas summan förlorade pengar per spelare
+    </p>
+    <p>
+        Tabellerna är medvetet orelaterade då det inte behövdes i detta fall.
+    </p>
+    <p>
+        Denna databasen är skapad/gjord i SQLite.
+    </p>
+    <p>
+        Jag kan förstå nyttan med ORM om man enbart vill göra mindre/enklare tabeller 
+        eller databas-förhållanden. Jag tycker dock tyvärr att nackdelarna överväger fördelarna 
+        i detta fallet. Jämfört med vad vi gjorde i databaskursen och framförallt med Eshoppen så 
+        känns detta som ett steg tillbaka. Likheterna är att likaså som vi gjorde i MYSQL 
+        så innehåller även databasen här tabeller och kolumner. Problemet är bara att de skapas 
+        via terminalen. Detta känns därför som att navigera i ett mörkt rum med ögonbindel på sig i förhållande 
+        till MYSQL. I MYSQL kändes det som man hade full koll på sin databas, det gick enkelt och 
+        smidigt att justera/ändra saker, samt att det var lätt att skapa sig en överblick. 
+        Man kunde även köra mindre delar åt gången för att testa resultat. När det förklarades att 
+        vi i och med "migration" skrev bort rätten att göra ändringar i vår egna databas så 
+        kändes det som allt annat än det man vill ha när man programmerar. Man behöver kunna gå in/tillbaka 
+        och enkelt kunna justera och göra ändringar när man skriver kod, inte minst som elev. Jag 
+        testade att kopiera in databasen i DB-Browser för att se om det gick att göra ändringar där. 
+        Jag möttes dock tyvärr av ett felmeddelande som sa att "databasen är låst". Då vi i detta 
+        sammanhanget enbart använde databasen under en kortare tid och i mindre utsträckning så kan jag förstå 
+        argumentet att använda ORM men jag skulle inte rekommendera det i någon form av programvara som ska 
+        driftsättas. 
+    </p>
+
+    
+
+    
+
+
+    
+    
+{% endblock %}

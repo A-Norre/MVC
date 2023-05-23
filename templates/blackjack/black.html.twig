@@ -1,21 +1,16 @@
-{% extends "base.html.twig" %}
+{% extends "base2.html.twig" %}
 
 {% block title %}Blackjack{% endblock %}
 
 {% block body %}
-    <h1>Blackjack</h1>
+    <h2>Blackjack</h2>
 
-    {# <form>
-        <input type="button" onclick="location.href='{{ path('blackjack_shuffle') }}';" value="Starta spelet!" />
-    </form> #}
+    
 
     <h3>Hur många spelare?<h3>
     <a href="{{ path('blackjack_bets', {num: 1}) }}">1 Spelare</a><br>
     <a href="{{ path('blackjack_bets', {num: 2}) }}">2 Spelare</a><br>
     <a href="{{ path('blackjack_bets', {num: 3}) }}">3 Spelare</a><br>
-
-    <a href="{{ path('blackjack_api') }}">API</a><br>
-    <a href="{{ path('blackjack_database_reset') }}">Reset database</a><br>
  
     <h3>Regler:</h3>
     <p>
