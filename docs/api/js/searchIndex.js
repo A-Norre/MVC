@@ -291,11 +291,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-BlackjackController.html"
         },                {
-            "fqsen": "\\App\\Controller\\BlackjackController\u003A\u003AprojectBlackJack\u0028\u0029",
-            "name": "projectBlackJack",
-            "summary": "",
-            "url": "classes/App-Controller-BlackjackController.html#method_projectBlackJack"
-        },                {
             "fqsen": "\\App\\Controller\\BlackjackController\u003A\u003AprojectBlackJackAbout\u0028\u0029",
             "name": "projectBlackJackAbout",
             "summary": "",
